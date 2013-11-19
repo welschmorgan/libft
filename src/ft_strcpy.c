@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 13:54:34 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/19 14:08:09 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/19 16:38:50 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/19 16:52:22 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	size_t			counter;
-	unsigned char	*ptr;
+	char	*pdest;
 
-	counter = 0;
-	ptr = (unsigned char *)s;
-	while (ptr && counter < n)
+	pdest = dest;
+	while (src && *src && dest)
 	{
-		*ptr = 0;
-		ptr ++;
-		counter ++;
+		*dest = *src;
+		src ++;
+		dest ++;
 	}
+	return (pdest);
 }
