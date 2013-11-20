@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/19 19:02:03 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/20 20:31:00 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,19 +14,29 @@ NAME = libft.a
 
 INC = ./inc
 SRC_DIR = ./src
-UNITS = ft_memset.c \
+UNITS = ft_memcpy.c \
+		ft_memccpy.c \
+		ft_memmove.c \
+		ft_memset.c \
+		ft_memchr.c \
+		ft_memcmp.c \
 		ft_bzero.c \
 		ft_strlen.c \
+		ft_strcpy.c \
+		ft_strdup.c \
+		ft_strcpy.c \
+		ft_strcat.c \
+		ft_strchr.c \
+		ft_strstr.c \
+		ft_strcmp.c \
+		ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_isprint.c \
 		ft_isascii.c \
 		ft_isalpha.c \
 		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_strcpy.c \
-		ft_strdup.c \
-		ft_memcpy.c
+		ft_isalnum.c
 
 UNITS_O = $(UNITS:.c=.o)
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
