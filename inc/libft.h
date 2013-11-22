@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:48 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 20:23:32 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/22 19:07:05 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,42 @@
 # define LIBFT__H
 # include <string.h>
 
+# define INVALID_STR "(NULL)"
 
+typedef unsigned long	t_ulong;
 typedef unsigned int	t_uint;
 typedef unsigned char	t_uchar;
 typedef unsigned short	t_ushort;
 
-typedef	t_uint*			t_uint_ptr;
-typedef t_uchar			t_uchar_ptr;
-typedef t_ushort*		t_ushort_ptr;
+typedef	t_uint			*t_uint_ptr;
+typedef t_uchar			*t_uchar_ptr;
+typedef t_ushort		*t_ushort_ptr;
+typedef unsigned long	*t_ulong_ptr;
+
+typedef enum			s_bool
+{
+	FALSE,
+	TRUE
+}						t_bool;
+
+/*
+ * content: data of the node
+ * content_size: data size of the node
+ * next: pointer to next element, or NULL for end
+ */
+typedef struct			s_list
+{
+	void				*content;
+	size_t				content_size;
+	struct s_list		*next;
+}						t_list;
+
+t_list					*ft_lstnew(void const *content, size_t content_size);
+void					ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void					ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void					ft_lstadd(t_list **alst, t_list *new);
+void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
  * Checks if two memory regions overlap
@@ -29,6 +57,8 @@ typedef t_ushort*		t_ushort_ptr;
  */
 int		ft_memoverlap(void *a, const void *b, size_t count);
 
+void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
 /*
  * Memory functions
  */
@@ -53,8 +83,24 @@ char	*ft_strchr(char *str, int c);
 char	*ft_strstr(const char *s1, const char *s2);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 
+char	*ft_strnew(size_t size);
+void	ft_strdel(char **as);
+void	ft_strclr(char *s);
+void	ft_striter(char *s, void (*f)(char *s));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+char	*ft_strmap(char const *s, char (*f)(char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int		ft_strequ(char const *s1, char const *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t sz);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s);
+char	**ft_strsplit(char const *s, char c);
+char	*ft_itoa(int n);
+
 /* Others */
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 
 /* Char manip funcs */
 int		ft_tolower(int c);
@@ -64,5 +110,21 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isalpha(int c);
 int		ft_isalnum(int c);
+
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
+void	ft_putendl(char const *s);
+void	ft_putnbr(int num);
+void	ft_putuint(unsigned int num);
+void	ft_putulong(unsigned long num);
+void	ft_putlong(long num);
+
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char const * s, int fd);
+void	ft_putendl_fd(char const *s, int fd);
+void	ft_putnbr_fd(int num, int fd );
+void	ft_putuint_fd(unsigned int num, int fd);
+void	ft_putulong_fd(unsigned long num, int fd);
+void	ft_putlong_fd(long num, int fd);
 
 #endif /* !LIBFT__H */

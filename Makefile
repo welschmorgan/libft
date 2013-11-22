@@ -30,13 +30,25 @@ UNITS = ft_memcpy.c \
 		ft_strstr.c \
 		ft_strcmp.c \
 		ft_atoi.c \
+		ft_atol.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_isprint.c \
 		ft_isascii.c \
 		ft_isalpha.c \
 		ft_isdigit.c \
-		ft_isalnum.c
+		ft_isalnum.c \
+		ft_lstadd.c \
+		ft_lstdelone.c \
+		ft_lstnew.c \
+		ft_utils.c \
+		ft_memalloc.c \
+		ft_memdel.c \
+		ft_strnew.c \
+		ft_strdel.c \
+		ft_strclr.c \
+		ft_striter.c \
+		ft_striteri.c
 
 UNITS_O = $(UNITS:.c=.o)
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
@@ -46,7 +58,10 @@ LNK = ar rcs
 
 .PHONY: clean fclean all re
 
-all: $(NAME)
+all: $(NAME) #test
+
+#test:
+#	$(MAKE) -C test
 
 $(NAME): $(UNITS_O)
 	@$(LNK) $(NAME) $^

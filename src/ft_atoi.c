@@ -15,17 +15,17 @@
 int		ft_atoi(const char *str)
 {
 	int	ret;
-	int	mul;
 
 	ret = 0;
-	mul = ((str && *str == '-') ? -1 : 1);
+	if (*str == '-')
+		return (-1 * ft_atoi(++str));
 
 	while (str && *str)
 	{
 		if (*str < '0' || *str > '9')
-			return (ret * mul);
+			return (ret);
 		ret = (ret * 10) + ((*str) - '0');
 		str ++;
 	}
-	return (ret * mul);
+	return (ret);
 }

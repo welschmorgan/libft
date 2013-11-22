@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 14:35:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 14:42:56 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/22 16:55:13 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/22 16:56:58 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	const unsigned char	*psrc;
-	unsigned char		*pdest;
+	t_uint		id;
 
-	if (!s1 || !n)
-		return (s1);
-	psrc = s2;
-	pdest = s1;
-	while (psrc && n > 0)
-	{
-		*pdest = *psrc;
-		if (*psrc == (unsigned char)c)
-			return (pdest + 1);
-		n --;
-		psrc ++;
-		pdest ++;
-	}
-	return (NULL);
+	id = 0;
+	while (s && *s)
+		f(id++, (s++));
 }

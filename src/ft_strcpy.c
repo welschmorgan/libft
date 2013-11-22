@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 16:38:50 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 17:21:17 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/22 19:06:15 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 char	*ft_strcpy(char *dest, const char *src)
 {
-	char	*pdest;
+	char	*ret;
+	size_t	len;
 
-	pdest = dest;
-	while (src && *src && dest)
-	{
-		*dest = *src;
-		src ++;
-		dest ++;
-	}
-	return (pdest);
+	len = ft_strlen(src);
+	ret = ft_memcpy((void*)dest, (const void*)src, sizeof(char) * (len + 1));
+	return (ret);
 }
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	char	*pdest;
+	size_t	cur;
+	t_bool	eol;
 
-	pdest = dest;
-	while (src && *src && dest && n--)
+	cur = 0;
+	eol = FALSE;
+	while (dest && src && src[cur] && cur > n)
 	{
-		*dest = *src;
-		src ++;
-		dest ++;
+		if (src[cur] == '\0' && n != 0)
+			eol = TRUE;
+		if (eol)
+			dest[cur] = '\0';
+		else
+			dest[cur] = src[cur];
+		cur ++;
 	}
-	return (pdest);
+	return (dest);
 }

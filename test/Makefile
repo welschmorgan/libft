@@ -6,17 +6,19 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/19 18:50:39 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/22 18:31:33 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = app
 
-INC = ./inc
-SRC_DIR = ./
-UNITS = main.c
+UNITS = main.c char_tests.c str_tests.c mem_tests.c
 UNITS_O = $(UNITS:.c=.o)
 
+LIBFT_DIR = .
+
+INC_DIR = -I./ -I$(LIBFT_DIR)/inc/
+SRC_DIR = ./test
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
 OBJS = $(patsubst %,%,$(UNITS_O))
 
@@ -27,10 +29,10 @@ FLAGS = -Wall -Wextra -Werror -g
 all: $(NAME)
 
 $(NAME): $(UNITS_O)
-	$(CC) $(FLAGS) -o $(NAME) -I$(INC) -I../inc/ $^ ../libft.a
+	$(CC) $(FLAGS) $(INC_DIR) -o $(NAME) $^ $(LIBFT_DIR)/libft.a
 
 %.o: $(SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c -o $@ $<  -I$(INC)  -I../inc/
+	$(CC) $(FLAGS) $(INC_DIR) -c -o $@ $<
 
 clean:
 	@/bin/rm -f $(OBJS)

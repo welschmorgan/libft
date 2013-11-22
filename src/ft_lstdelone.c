@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 14:35:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 14:42:56 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/22 18:44:58 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/22 18:45:02 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t s))
 {
-	const unsigned char	*psrc;
-	unsigned char		*pdest;
+	t_list		*p_cur;
 
-	if (!s1 || !n)
-		return (s1);
-	psrc = s2;
-	pdest = s1;
-	while (psrc && n > 0)
+	if (!alst || !*alst)
+		return ;
+	p_cur = (*alst);
+	while (p_cur)
 	{
-		*pdest = *psrc;
-		if (*psrc == (unsigned char)c)
-			return (pdest + 1);
-		n --;
-		psrc ++;
-		pdest ++;
+		if (p_cur->content)
+		{
+			del(p_cur->content, p_cur->content_size);
+			free(p_cur->content);
+		}
+		p_cur->content = NULL;
+		p_cur = p_cur->next;
 	}
-	return (NULL);
 }

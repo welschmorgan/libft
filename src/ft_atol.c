@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 14:35:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 14:42:56 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/20 20:22:10 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/22 18:42:54 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+long		ft_atol(const char *str)
 {
-	const unsigned char	*psrc;
-	unsigned char		*pdest;
+	long	ret;
 
-	if (!s1 || !n)
-		return (s1);
-	psrc = s2;
-	pdest = s1;
-	while (psrc && n > 0)
+	ret = 0;
+	if (*str == '-')
+		return (-1 * ft_atol(++str));
+
+	while (str && *str)
 	{
-		*pdest = *psrc;
-		if (*psrc == (unsigned char)c)
-			return (pdest + 1);
-		n --;
-		psrc ++;
-		pdest ++;
+		if (*str < '0' || *str > '9')
+			return (ret);
+		ret = (ret * 10) + ((*str) - '0');
+		str ++;
 	}
-	return (NULL);
+	return (ret);
 }
