@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:48 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/22 19:07:05 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/22 22:18:54 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	ft_bzero(void *b, size_t len);
 /* Str manipulation funcs */
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *src);
+int		ft_strcmp(const char *dest, const char *src);
+int		ft_strncmp(const char *dest, const char *src, size_t n);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_strcat(char *dest, const char *src);
@@ -94,6 +96,9 @@ int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t sz);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+t_bool	ft_isanyof(char c, char const *seps);
+char	*ft_strltrim(char *str, char const *separators);
+char	*ft_strrtrim(char *str, char const *separators);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
