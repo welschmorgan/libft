@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/19 13:54:43 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/23 21:53:54 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,6 +16,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	unsigned char	*pstart;
 	unsigned char	*pend;
 
+	INSIDE(memset);
 	if (!b || !len)
 		return (b);
 	pstart = (unsigned char *)b;

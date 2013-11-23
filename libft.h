@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:48 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/22 22:18:54 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/23 21:52:32 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ void	ft_putnbr_fd(int num, int fd );
 void	ft_putuint_fd(unsigned int num, int fd);
 void	ft_putulong_fd(unsigned long num, int fd);
 void	ft_putlong_fd(long num, int fd);
+
+# define INSIDE(func) ft_putendl("Inside function " #func);
 
 #endif /* !LIBFT__H */

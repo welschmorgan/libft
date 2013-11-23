@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 14:43:45 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/23 19:37:03 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/23 21:54:44 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	const t_uchar	*psrc;
 	t_uchar			*pdest;
 
+	INSIDE(memmove);
 	if (dest <= src || dest >= (src + n))
 	{
 		psrc = (const t_uchar*)src;
