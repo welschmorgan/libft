@@ -1,8 +1,0 @@
-#!/bin/sh
-
-BASE="./tmp"
-mkdir -p $BASE
-ls src > $BASE/sources.lst
-cat Makefile | grep -e "ft_([a-z_]+)+.c" > $BASE/makefile.lst
-cat $BASE/makefile.lst $BASE/sources.lst | sort | uniq -u
-exit 0

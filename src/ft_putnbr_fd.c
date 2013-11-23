@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memoverlap.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 15:27:12 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/22 18:47:31 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/23 21:39:21 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/23 21:39:36 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memoverlap(void *dest, const void *src, size_t n)
+void	ft_putnbr_fd(int num, int fd)
 {
-	return (dest <= src || dest >= ((char*)src + count)));
+	if (num >= 10)
+	{
+		ft_putnbr_fd(num / 10, fd);
+		ft_putnbr_fd(num % 10, fd);
+	}
+	else
+		ft_putchar_fd('0' + num, fd);
 }

@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/22 22:04:12 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/23 21:44:02 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,10 +39,7 @@ UNITS = ft_memcpy.c \
 		ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
-		ft_lstadd.c \
-		ft_lstdelone.c \
-		ft_lstnew.c \
-		ft_utils.c \
+		\
 		ft_memalloc.c \
 		ft_memdel.c \
 		ft_strnew.c \
@@ -56,7 +53,24 @@ UNITS = ft_memcpy.c \
 		ft_strnequ.c \
 		ft_strsub.c \
 		ft_strjoin.c \
-		ft_strtrim.c
+		ft_strtrim.c \
+		ft_putchar.c \
+		ft_putchar_fd.c \
+		ft_putstr.c \
+		ft_putstr_fd.c \
+		ft_putnbr.c \
+		ft_putnbr_fd.c \
+		ft_putlong.c \
+		ft_putlong_fd.c \
+		ft_putulong.c \
+		ft_putulong_fd.c \
+		ft_putuint.c \
+		ft_putuint_fd.c \
+		\
+		ft_lstadd.c \
+		ft_lstdel.c \
+		ft_lstdelone.c \
+		ft_lstnew.c
 
 UNITS_O = $(UNITS:.c=.o)
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))

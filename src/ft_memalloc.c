@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 18:45:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/22 18:45:19 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/23 19:51:14 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	*ft_memalloc(size_t size)
 	ptr = malloc(size);
 	if (!ptr)
 		return (NULL);
+	ft_memset(ptr, 0, size);
 	return (ptr);
 }
