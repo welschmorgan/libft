@@ -12,7 +12,7 @@
 
 NAME = libft.a
 
-INC = ./inc
+INC = ./
 SRC_DIR = ./src
 UNITS = ft_memcpy.c \
 		ft_memccpy.c \
