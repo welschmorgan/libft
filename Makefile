@@ -28,6 +28,7 @@ UNITS = ft_memcpy.c \
 		ft_strcat.c \
 		ft_strchr.c \
 		ft_strstr.c \
+		ft_strnstr.c \
 		ft_strcmp.c \
 		ft_atoi.c \
 		ft_atol.c \
