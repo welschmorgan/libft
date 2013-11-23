@@ -18,7 +18,7 @@ putchar
 putstr
 putendl
 putnbr
-ft_putchar_fd
-ft_putstr_fd
-ft_putendl_fd
-ft_putnbr_fd
+putchar_fd
+putstr_fd
+putendl_fd
+putnbr_fd
