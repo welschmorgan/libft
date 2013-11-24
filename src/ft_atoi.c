@@ -16,7 +16,6 @@ int		ft_atoi(const char *str)
 {
 	int	ret;
 
-	INSIDE(atoi);
 	ret = 0;
 	if (*str == '-')
 		return (-1 * ft_atoi(++str));

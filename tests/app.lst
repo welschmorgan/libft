@@ -1,0 +1,5 @@
+./apps/atoi.app
+./apps/atol.app
+./apps/bzero.app
+./apps/isalnum.app
+./apps/isalpha.app

@@ -66,6 +66,8 @@ UNITS = ft_memcpy.c \
 		ft_putulong_fd.c \
 		ft_putuint.c \
 		ft_putuint_fd.c \
+		ft_putendl.c \
+		ft_putendl_fd.c \
 		\
 		ft_lstadd.c \
 		ft_lstdel.c \
@@ -77,6 +79,7 @@ SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
 OBJS = $(patsubst %,%,$(UNITS_O))
 FLAGS = -Wall -Wextra -Werror -g
 LNK = ar rcs
+CC = cc
 
 .PHONY: clean fclean all re
 
