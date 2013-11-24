@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 16:28:25 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/24 20:07:25 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/24 20:37:56 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/24 20:40:12 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-int		ft_isalpha(int c)
+char	*ft_strrev(char *str)
 {
-	return (c >= 'A' && c <= 'z');
+	char	*pcur;
+	char	*pend;
+
+	pcur = str;
+	pend = str + (ft_strlen(str) - 1);
+	if (!*str)
+		return (str);
+	while (pcur != pend)
+	{
+		ft_swap(pcur, pend);
+		pcur ++;
+		pend ++;
+	}
 }

@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 16:28:25 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/24 20:07:25 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/24 20:34:47 by mwelsch           #+#    #+#             */
+/*   Updated: 2013/11/24 20:36:42 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+void	ft_swap(int *a, int *b)
 {
-	return (c >= 'A' && c <= 'z');
+	int		tmp;
+
+	if (!a || !b)
+		return ;
+	tmp = *b;
+	*b = *a;
+	*a = tmp;
+}
+void	ft_swap(char *a, char *b)
+{
+	char	tmp;
+
+	if (!a || !b)
+		return ;
+	tmp = *b;
+	*b = *a;
+	*a = tmp;
 }

@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:48 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/23 21:52:32 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/24 20:40:20 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ typedef struct			s_list
 	struct s_list		*next;
 }						t_list;
 
-t_list					*ft_lstnew(void const *content, size_t content_size);
-void					ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void					ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void					ft_lstadd(t_list **alst, t_list *new);
-void					ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list					*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list	*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 /*
  * Checks if two memory regions overlap
@@ -68,15 +68,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	ft_bzero(void *b, size_t len);
 
 
 /* Str manipulation funcs */
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *src);
-int	ft_strcmp(const char *dest, const char *src);
-int	ft_strncmp(const char *dest, const char *src, size_t n);
+int		ft_strcmp(const char *dest, const char *src);
+int		ft_strncmp(const char *dest, const char *src, size_t n);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_strcat(char *dest, const char *src);
@@ -105,17 +105,18 @@ char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 
 /* Others */
-int	ft_atoi(const char *str);
+char	*ft_itoa(int value, char *str, int base);
+int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
 /* Char manip funcs */
-int	ft_tolower(int c);
-int	ft_toupper(int c);
-int	ft_isprint(int c);
-int	ft_isascii(int c);
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
-int	ft_isalnum(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+int		ft_isprint(int c);
+int		ft_isascii(int c);
+int		ft_isdigit(int c);
+int		ft_isalpha(int c);
+int		ft_isalnum(int c);
 
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
@@ -132,6 +133,13 @@ void	ft_putnbr_fd(int num, int fd );
 void	ft_putuint_fd(unsigned int num, int fd);
 void	ft_putulong_fd(unsigned long num, int fd);
 void	ft_putlong_fd(long num, int fd);
+
+/*
+ * MISC FUNCS
+ */
+void	ft_swap(char *a, char *b);
+void	ft_swap(int *a, int *b);
+char	*ft_strrev(char *str);
 
 # define INSIDE(func) ft_putendl("Inside function " #func);
 

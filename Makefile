@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/23 21:44:02 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/24 20:51:56 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -78,32 +78,40 @@ UNITS = ft_memcpy.c \
 		ft_lstadd.c \
 		ft_lstdel.c \
 		ft_lstdelone.c \
-		ft_lstnew.c
+		ft_lstnew.c \
+		\
+		ft_strrev.c \
+		ft_swap.c
 
 UNITS_O = $(UNITS:.c=.o)
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
 OBJS = $(patsubst %,%,$(UNITS_O))
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror -g -std=c89
 LNK = ar rcs
 CC = cc
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re tests
 
-all: $(NAME) #test
+all: $(NAME) tests
 
-#test:
-#	$(MAKE) -C test
+tests:
+	make all -C tests
 
 $(NAME): $(UNITS_O)
-	@$(LNK) $(NAME) $^
+	$(LNK) $(NAME) $^
 
 %.o: $(SRC_DIR)/%.c
-	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
+	$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
 
 clean:
-	@/bin/rm -f $(OBJS)
+	/bin/rm -f $(OBJS)
+	make clean -C tests
 
 fclean : clean
-	@/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
+	make fclean -C tests
 
-re : fclean all
+re: fclean all
+
+run: all
+	make run -C tests
