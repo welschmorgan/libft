@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:48 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/24 20:40:20 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/24 20:59:05 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 
 /* Others */
-char	*ft_itoa(int value, char *str, int base);
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
@@ -137,8 +136,8 @@ void	ft_putlong_fd(long num, int fd);
 /*
  * MISC FUNCS
  */
-void	ft_swap(char *a, char *b);
-void	ft_swap(int *a, int *b);
+void	ft_swapc(char *a, char *b);
+void	ft_swapi(int *a, int *b);
 char	*ft_strrev(char *str);
 
 # define INSIDE(func) ft_putendl("Inside function " #func);

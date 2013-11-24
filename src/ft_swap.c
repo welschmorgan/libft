@@ -6,13 +6,13 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/24 20:34:47 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/24 20:36:42 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/24 20:57:39 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_swap(int *a, int *b)
+void	ft_swapi(int *a, int *b)
 {
 	int		tmp;
 
@@ -22,7 +22,7 @@ void	ft_swap(int *a, int *b)
 	*b = *a;
 	*a = tmp;
 }
-void	ft_swap(char *a, char *b)
+void	ft_swapc(char *a, char *b)
 {
 	char	tmp;
 
