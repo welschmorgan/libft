@@ -10,5 +10,6 @@ for f in apps/*.app; do
 done
 
 sh app.lst
+rm -f app.lst
 
 exit 0
