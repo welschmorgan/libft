@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/24 21:32:18 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/24 22:11:18 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -30,6 +30,7 @@ UNITS = ft_memcpy.c \
 		ft_strlcat.c \
 		ft_strncat.c \
 		ft_strchr.c \
+		ft_strrchr.c \
 		ft_strstr.c \
 		ft_strnstr.c \
 		ft_strcmp.c \
