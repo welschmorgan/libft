@@ -20,13 +20,13 @@ char	*ft_strsub(char const *s1, unsigned int start, size_t len)
 	char	*ret;
 
 	slen = ft_strlen(s1);
-	if (((start + len) > slen) || len == 0)
+	if (((start + len) >= slen) || len == 0)
 		return (NULL);
 	ret = ft_strnew(start + len);
 	if (!ret)
 		return (NULL);
-	p_s1 = ret;
-	p_ret = (char *)s1;
+	p_s1 = (char *)s1;
+	p_ret = ret;
 	while (len --)
 	{
 		*(p_ret++) = *(p_s1++);

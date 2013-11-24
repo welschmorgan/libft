@@ -1,9 +1,115 @@
-Isalnum(a):
-	libft: 1
-	libc: 8
-Isalnum(0):
-	libft: 1
-	libc: 8
-Isalpha(a):
-	libft: 97
-	libc: 1024
+make fclean -C atoi
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/atoi'
+rm -f *.o
+rm -f ../atoi.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/atoi'
+make fclean -C atol
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/atol'
+rm -f *.o
+rm -f ../atol.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/atol'
+make fclean -C bzero
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/bzero'
+rm -f *.o
+rm -f ../bzero.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/bzero'
+make fclean -C isalpha
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/isalpha'
+rm -f *.o
+rm -f ../isalpha.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/isalpha'
+make fclean -C isalnum
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/isalnum'
+rm -f *.o
+rm -f ../isalnum.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/isalnum'
+make fclean -C strsplit
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/strsplit'
+rm -f *.o
+rm -f ../strsplit.app
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/strsplit'
+make -C atoi
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/atoi'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../atoi.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/atoi'
+make -C atol
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/atol'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../atol.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/atol'
+make -C bzero
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/bzero'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../bzero.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/bzero'
+make -C isalnum
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/isalnum'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../isalnum.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/isalnum'
+make -C isalpha
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/isalpha'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../isalpha.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/isalpha'
+make -C strsplit
+make[1]: Entering directory `/home/darkboss/42/projets/libft/tests/strsplit'
+gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o ../strsplit.app -I../ -I../../ ../../libft.a
+make[1]: Leaving directory `/home/darkboss/42/projets/libft/tests/strsplit'
+Atoi():
+	libft: 0
+	libc: 0
+Atoi(0):
+	libft: 0
+	libc: 0
+Atoi(-32767):
+	libft: -32767
+	libc: -32767
+Atoi(32767):
+	libft: 32767
+	libc: 32767
+Atoi(-32768):
+	libft: -32768
+	libc: -32768
+Atoi(32768):
+	libft: 32768
+	libc: 32768
+Atol():
+	libft: 0
+	libc: 0
+Atol(0):
+	libft: 0
+	libc: 0
+Atol(-32767):
+	libft: -32767
+	libc: -32767
+Atol(32767):
+	libft: 32767
+	libc: 32767
+Atol(-32768):
+	libft: -32768
+	libc: -32768
+Atol(32768):
+	libft: 32768
+	libc: 32768
+Bzero:
+	libft: 0
+	libc: 0
+Bzero:
+	libft: 
+	libc: 
+Bzero:
+	libft: 0,0,0,0,0,0,0,0,0,0
+	libc: 0,0,0,0,0,0,0,0,0,0
+Isalnum(@):
+	libft: 0
+	libc: 0
+Isalnum(~):
+	libft: 0
+	libc: 0
+Isalpha(0):
+	libft: 0
+	libc: 0
+Isalpha(@):
+	libft: 0
+	libc: 0
+Inside function memalloc
+Inside function memset
+Inside function memalloc
+Inside function memset

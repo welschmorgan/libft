@@ -2,6 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#if __WORDSIZE == 64
+#define LMAX "2147483647L"
+#else
+#define LMAX "9223372036854775807L"
+#endif
+
 void	do_atol(char *str)
 {
 	int a		= ft_atol(str);

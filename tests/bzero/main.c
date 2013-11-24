@@ -6,7 +6,6 @@
 void	do_bzero(size_t size)
 {
 	int			*ar0, *ar1;
-	FILE		*stream = stdout;
 	size_t		i = 0;
 
 	ar0 = (int *)malloc(sizeof(int) * size);
@@ -17,22 +16,22 @@ void	do_bzero(size_t size)
 		fprintf(stderr, "Bzero: invalid malloc\n");
 	ft_bzero(ar0, size);
 	bzero(ar1, size);
-	fprintf(stream, "Bzero:\n\tlibft: ");
+	fprintf(stdout, "Bzero:\n\tlibft: ");
 	while (i < size)
 	{
-		fprintf(stream, "%i%s", ar0[i], ((i!=(size-1)) ? "," : ""));
+		fprintf(stdout, "%i%s", ar0[i], ((i!=(size-1)) ? "," : ""));
 		i ++;
 	}
-	fprintf(stream, "\n\tlibc: ");
+	fprintf(stdout, "\n\tlibc: ");
 	i = 0;
 	while (i < size)
 	{
-		fprintf(stream, "%i%s", ar0[i], ((i!=(size-1)) ? "," : ""));
+		fprintf(stdout, "%i%s", ar0[i], ((i!=(size-1)) ? "," : ""));
 		i ++;
 	}
 	free(ar0);
 	free(ar1);
-	fprintf(stream, "\n");
+	fprintf(stdout, "\n");
 }
 
 int	main(void)

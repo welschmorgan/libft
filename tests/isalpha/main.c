@@ -4,13 +4,10 @@
 
 void	do_isalpha(char c)
 {
-	
-	FILE		*strm;
 	int			a = ft_isalpha(c);
 	int			b = isalpha(c);
 
-	strm = ((a == b) ? stdout : stderr);
-	fprintf(strm, "Isalpha(%c):\n\tlibft: %i\n\tlibc: %i\n", c, a, b);
+	fprintf(OUT_STREAM(a, b), "Isalpha(%c):\n\tlibft: %i\n\tlibc: %i\n", c, a, b);
 }
 
 int	main(void)

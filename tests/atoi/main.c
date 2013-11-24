@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define IMAX "2147483647"
+
 void	do_atoi(char *str)
 {
 	int a		= ft_atoi(str);
@@ -15,9 +17,7 @@ int	main(void)
 {
 	do_atoi("");
 	do_atoi("0");
-	do_atoi("-32767");
-	do_atoi("32767");
-	do_atoi("-32768");
-	do_atoi("32768");
+	do_atoi(IMAX);
+	do_atoi("-" IMAX);
 	return (0);
 }

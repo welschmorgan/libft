@@ -17,10 +17,12 @@ size_t	ft_count_words(char const *s, char sep)
 	}
 	return (ret);
 }
+
 size_t	ft_strlen_ptr(char const *start, char const *end)
 {
 	return ((unsigned char*)end - (unsigned char *)start);
 }
+
 char	**ft_strsplit(char const *s, char c)
 {
 	char				**ret;
@@ -43,11 +45,11 @@ char	**ft_strsplit(char const *s, char c)
 			ret ++;
 			pret = ret;
 		}
-		while (*s == c)
+		while (*s && *s == c)
 			s++;
 		if (*s != c)
 			pstart = s;
-		while (*s != c)
+		while (*s && *s != c)
 		{
 			pend = s;
 			s ++;
