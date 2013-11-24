@@ -10,7 +10,7 @@ void	do_isalpha(char c)
 	int			b = isalpha(c);
 
 	strm = ((a == b) ? stdout : stderr);
-	fprintf(strm, "Isalpha(%c):\n\tlibft: %s\n\tlibc: %s\n", c, a ? "true" : "false", b ? "true" : "false");
+	fprintf(strm, "Isalpha(%c):\n\tlibft: %i\n\tlibc: %i\n", c, a, b);
 }
 
 int	main(void)

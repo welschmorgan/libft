@@ -8,6 +8,7 @@ $(NAME):
 	make -C bzero
 	make -C isalnum
 	make -C isalpha
+	make -C strsplit
 
 clean:
 	make clean -C atoi
@@ -15,6 +16,7 @@ clean:
 	make clean -C bzero
 	make clean -C isalpha
 	make clean -C isalnum
+	make clean -C strsplit
 
 fclean:
 	make fclean -C atoi
@@ -22,6 +24,7 @@ fclean:
 	make fclean -C bzero
 	make fclean -C isalpha
 	make fclean -C isalnum
+	make fclean -C strsplit
 
 re: fclean all
 

@@ -1,0 +1,9 @@
+Isalnum(a):
+	libft: 1
+	libc: 8
+Isalnum(0):
+	libft: 1
+	libc: 8
+Isalpha(a):
+	libft: 97
+	libc: 1024

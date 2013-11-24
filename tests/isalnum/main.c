@@ -10,7 +10,7 @@ void	do_isalnum(char c)
 	int			b = isalnum(c);
 
 	strm = ((a == b) ? stdout : stderr);
-	fprintf(strm, "Isalnum(%c):\n\tlibft: %s\n\tlibc: %s\n", c, a ? "true" : "false", b ? "true" : "false");
+	fprintf(strm, "Isalnum(%c):\n\tlibft: %i\n\tlibc: %i\n", c, a, b);
 }
 
 int	main(void)
