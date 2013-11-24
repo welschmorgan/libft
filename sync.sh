@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rm -rf $HOME/Rendu/algo1/libft/*
+mkdir -p $HOME/Rendu/algo1/libft
 cp Makefile $HOME/Rendu/algo1/libft
 cp auteur $HOME/Rendu/algo1/libft
 cp libft.h $HOME/Rendu/algo1/libft
