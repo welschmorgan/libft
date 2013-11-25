@@ -1,0 +1,150 @@
+Atoi():
+	libft: 0
+	libc: 0
+Atoi(0):
+	libft: 0
+	libc: 0
+Atoi(2147483647):
+	libft: 2147483647
+	libc: 2147483647
+Atoi(-2147483647):
+	libft: -2147483647
+	libc: -2147483647
+Bzero(size 1):
+	libft: 0
+	libc: 0
+Bzero(size 0):
+	libft: 
+	libc: 
+Bzero(size 10):
+	libft: 0,0,0,0,0,0,0,0,0,0
+	libc: 0,0,0,0,0,0,0,0,0,0
+----------------------------
+Testing 'isalnum':
+----------------------------
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+	libft: 0 - libc: 0
+	libft: 0 - libc: 0
+----------------------------
+----------------------------
+Testing 'isalpha':
+----------------------------
+	libft: 1 - libc: 1
+	libft: 0 - libc: 0
+	libft: 0 - libc: 0
+	libft: 0 - libc: 0
+----------------------------
+----------------------------
+Testing 'isascii':
+----------------------------
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+----------------------------
+---------------------------
+Testing 'isdigit':
+---------------------------
+	libft: 0
+	libc: 0
+---------------------------
+---------------------------
+Testing 'isdigit':
+---------------------------
+	libft: 1
+	libc: 1
+---------------------------
+---------------------------
+Testing 'isdigit':
+---------------------------
+	libft: 0
+	libc: 0
+---------------------------
+----------------------------
+Testing 'isprint':
+----------------------------
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+	libft: 1 - libc: 1
+----------------------------
+----------------------------
+Testing 'strcat':
+----------------------------
+Catted Molle to Bite: libft: BiteMolle - libc: BiteMolle
+Catted Molle to : libft: Molle - libc: Molle
+Catted  to Bite: libft: Bite - libc: Bite
+Catted  to : libft:  - libc: 
+----------------------------
+----------------------------
+Testing 'strchr':
+----------------------------
+Searching for t in Bite:
+	libft: te
+	libc: te
+Searching for   in hello world:
+	libft:  world
+	libc:  world
+Searching for   in NULL:
+	libft: (null)
+	libc: (null)
+Searching for   in :
+	libft: (null)
+	libc: (null)
+Searching for   in blah:
+	libft: (null)
+	libc: (null)
+----------------------------
+----------------------------
+Testing 'strcpy':
+----------------------------
+Copying Bite to 0x7f94fac000e0:
+	libft: Bite
+	libc: Bite
+Copying Serviettes to 0x7f94fac04570:
+	libft: Serviettes
+	libc: Serviettes
+Copying Se to 0x7f94fac000e0:
+	libft: Se
+	libc: Se
+Copying  to 0x7f94fac04570:
+	libft: 
+	libc: 
+Copying (null) to 0x7f94fac000e0:
+	libft: 
+	libc: 
+----------------------------
+----------------------------
+Testing 'strdup':
+----------------------------
+Duplicating Bite:	libft: Bite	libc: Bite
+Duplicating Serviettes:	libft: Serviettes	libc: Serviettes
+Duplicating Se:	libft: Se	libc: Se
+Duplicating :	libft: 	libc: 
+Duplicating (null):	libft: 	libc: 
+----------------------------
+----------------------------
+Testing 'strlcat':
+----------------------------
+Catted Molle to : libft: 1 - libc: 5
+Catted  to : libft: 0 - libc: 0
+----------------------------
+----------------------------
+Testing 'strcmp':
+----------------------------
+Comparing Bite with Bite:
+	libft: 0
+	libc: 0
+Comparing Serviettes with Torchons:
+	libft: -1
+	libc: -1
+Comparing Se with :
+	libft: 83
+	libc: 83
+Comparing  with :
+	libft: 0
+	libc: 0
+Comparing (null) with (null):
+	libft: 0
+	libc: 0
+----------------------------
