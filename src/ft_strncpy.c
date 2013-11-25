@@ -16,6 +16,7 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 		else
 			*(ptr++) = *(src++);
 	}
-	*ptr = '\0';
+	if (ptr)
+		*ptr = '\0';
 	return (dest);
 }

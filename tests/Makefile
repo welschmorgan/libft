@@ -18,6 +18,7 @@ $(NAME):
 	make -C strcmp
 	make -C strcpy
 	make -C strdup
+	make -C strlcat
 
 clean:
 #	make clean -C strsplit
@@ -35,6 +36,7 @@ clean:
 	make clean -C strcmp
 	make clean -C strcpy
 	make clean -C strdup
+	make clean -C strlcat
 
 fclean:
 #	make fclean -C strsplit
@@ -52,6 +54,7 @@ fclean:
 	make fclean -C strcmp
 	make fclean -C strcpy
 	make fclean -C strdup
+	make fclean -C strlcat
 
 re: fclean all
 
