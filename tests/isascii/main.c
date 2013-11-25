@@ -6,7 +6,7 @@
 
 #define FUNC_NAME "isascii"
 
-int		isascii(char);
+int		isascii(int);
 void	do_test(char n)
 {
 	int		a;

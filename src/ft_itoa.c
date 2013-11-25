@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/24 20:20:16 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/24 21:34:03 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/25 17:53:30 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		ft_nbr_size(int dig)
 	int			temp;
 
 	temp = dig;
+	ret = 0;
 	while (temp)
 	{
 		ret++;
@@ -28,7 +29,7 @@ int		ft_nbr_size(int dig)
 
 char	*ft_itoa(int n)
 {
-	char*	ret;
+	char	*ret;
 	int		num_chars;
 	int		negative;
 

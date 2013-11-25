@@ -5,3 +5,4 @@ src/*~
 tests/*/*~
 tests/*/*.o
 tests/apps/*.app
+tests/*.app.*
