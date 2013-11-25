@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mkdir -p ./apps
-mv *.app ./apps
+mv *.app ./apps 2> /dev/null
 
 echo "\c" > app.lst
 for f in apps/*.app; do

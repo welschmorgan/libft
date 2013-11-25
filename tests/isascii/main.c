@@ -1,36 +1,37 @@
 #include "libft.h"
+#include "common.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
 #define FUNC_NAME "isascii"
 
-int		isascii(int c);
+int		isascii(char);
 void	do_test(char n)
 {
 	int		a;
 	int		b;
 	FILE	*stream;
 
-	printf("---------------------------\n");
-	printf("Testing '%s':\n", FUNC_NAME);
-	printf("---------------------------\n");
-
 	a = ft_isascii(n);
-	b = isascii(n);
+	b = isascii(n) ? 1 : 0;
 	stream = ((a == b) ? stdout : stderr);
 
-	fprintf(stream, "\tlibft: %i\n", a);
-	fprintf(stream, "\tlibc: %i\n", b);
-
-	printf("---------------------------\n");
+	fprintf(stream, "\tlibft: %i - ", a);
+	fprintf(stream, "libc: %i\n", b);
 }
 
 
 int	main(void)
 {
+	print_hr();
+	printf("Testing '%s':\n", FUNC_NAME);
+	print_hr();
+
 	do_test('a');
-	do_test('@');
-	do_test('*');
+	do_test('0');
+	do_test(')');
+
+	print_hr();
 	return (0);
 }

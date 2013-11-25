@@ -14,10 +14,11 @@
 
 char	*ft_strcpy(char *dest, const char *src)
 {
-	char	*ret;
-	size_t	len;
+	char	*ptr;
 
-	len = ft_strlen(src);
-	ret = ft_memcpy((void*)dest, (const void*)src, sizeof(char) * (len + 1));
-	return (ret);
+	ptr = dest;
+	while (ptr && src && *src)
+		*(ptr++) = *(src++);
+	*ptr = '\0';
+	return (dest);
 }

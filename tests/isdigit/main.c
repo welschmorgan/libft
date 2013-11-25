@@ -17,7 +17,7 @@ void	do_test(char n)
 	printf("---------------------------\n");
 
 	a = ft_isdigit(n);
-	b = isdigit(n);
+	b = isdigit(n) ? 1 : 0;
 	stream = ((a == b) ? stdout : stderr);
 
 	fprintf(stream, "\tlibft: %i\n", a);

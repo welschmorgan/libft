@@ -1,6 +1,6 @@
 NAME=isalnum.app
 CC=gcc -Wall -Werror -Wextra -pedantic -std=c89 -g
-SRCS=*.c
+SRCS=../common.c *.c
 INC=-I../ -I../../
 LIBS=../../libft.a
 TARGET=../$(NAME)

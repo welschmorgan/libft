@@ -13,6 +13,11 @@ $(NAME):
 	make -C isascii
 	make -C isdigit
 	make -C isprint
+	make -C strcat
+	make -C strchr
+	make -C strcmp
+	make -C strcpy
+	make -C strdup
 
 clean:
 #	make clean -C strsplit
@@ -25,6 +30,11 @@ clean:
 	make clean -C isascii
 	make clean -C isdigit
 	make clean -C isprint
+	make clean -C strcat
+	make clean -C strchr
+	make clean -C strcmp
+	make clean -C strcpy
+	make clean -C strdup
 
 fclean:
 #	make fclean -C strsplit
@@ -37,6 +47,11 @@ fclean:
 	make fclean -C isascii
 	make fclean -C isdigit
 	make fclean -C isprint
+	make fclean -C strcat
+	make fclean -C strchr
+	make fclean -C strcmp
+	make fclean -C strcpy
+	make fclean -C strdup
 
 re: fclean all
 

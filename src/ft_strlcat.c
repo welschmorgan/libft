@@ -7,8 +7,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 
 	slen = ft_strlen(src);
 	dlen = ft_strlen(dest);
-	if ((slen + dlen) >= size)
-		return (slen + dlen);
+	size = size < slen ? size : slen;
 	ft_strncpy(dest + dlen, src, slen);
 	return (dlen + slen);
 }

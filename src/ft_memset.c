@@ -13,8 +13,8 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*pstart;
-	unsigned char	*pend;
+	t_uchar		*pstart;
+	t_uchar		*pend;
 
 	if (!b || !len)
 		return (b);
@@ -22,7 +22,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	pend = pstart + len;
 	while (pstart != pend)
 	{
-		*pstart = c;
+		*pstart = (unsigned char)c;
 		pstart ++;
 	}
 	return (b);

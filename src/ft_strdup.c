@@ -17,9 +17,12 @@ char	*ft_strdup(const char *src)
 {
 	char	*dup;
 
-	dup = (char*)malloc(sizeof(char) * ft_strlen(src));
+	dup = ft_strnew(src ? ft_strlen(src) : 1);
 	if (!dup)
 		return (NULL);
-	ft_strcpy(dup, src);
+	if (src)
+		ft_strcpy(dup, src);
+	else
+		dup[0] = '\0';
 	return (dup);
 }

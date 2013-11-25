@@ -22,21 +22,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		psrc = (const t_uchar*)src;
 		pdest = (t_uchar*)dest;
 		while (n-- && psrc && pdest)
-		{
-			*pdest = *psrc;
-			pdest ++;
-			psrc ++;
-		}
+			*(pdest++) = *(psrc++);
 	}
 	else
 	{
 		psrc = (const t_uchar*)(src + n - 1);
 		pdest = (t_uchar*)(dest + n - 1);
-		while (n -- && psrc && pdest)
-		{
-			pdest --;
-			psrc --;
-		}
+		while (n-- && psrc && pdest)
+			*(pdest--) = *(psrc--);
 	}
 	return (dest);
 }

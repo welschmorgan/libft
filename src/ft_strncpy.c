@@ -2,20 +2,20 @@
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	size_t	cur;
+	char	*ptr;
 	t_bool	eol;
 
-	cur = 0;
+	ptr = dest;
 	eol = FALSE;
-	while (dest && src && src[cur] && cur > n)
+	while (ptr && *ptr && src && n--)
 	{
-		if (src[cur] == '\0' && n != 0)
+		if (*src == '\0')
 			eol = TRUE;
 		if (eol)
-			dest[cur] = '\0';
+			*(ptr++) = '\0';
 		else
-			dest[cur] = src[cur];
-		cur ++;
+			*(ptr++) = *(src++);
 	}
+	*ptr = '\0';
 	return (dest);
 }

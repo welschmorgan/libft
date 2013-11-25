@@ -4,18 +4,32 @@
 
 #define FUNC_NAME "isprint"
 
-
-
-# define DO_TEST(c) TEST(ft_isprint(c), isprint(c), int_test)
-
-t_error	*do_tests(void)
+void	do_test(char n)
 {
-	DO_TEST('a');
-	SUCCESS();
+	int		a;
+	int		b;
+	FILE	*stream;
+
+	a = ft_isprint(n);
+	b = isprint(n) ? 1 : 0;
+	stream = ((a == b) ? stdout : stderr);
+
+	fprintf(stream, "\tlibft: %i - ", a);
+	fprintf(stream, "libc: %i\n", b);
 }
 
-int		main(void)
+
+int	main(void)
 {
-	TEST_FUNC(FUNC_NAME, do_tests);
+	print_hr();
+	printf("Testing '%s':\n", FUNC_NAME);
+	print_hr();
+
+	do_test('a');
+	do_test('0');
+	do_test(')');
+	do_test(')');
+
+	print_hr();
 	return (0);
 }

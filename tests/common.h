@@ -17,7 +17,7 @@ typedef enum			e_error_code
 typedef struct			s_error
 {
 	char				*msg;
-	t_error_code		code;	
+	t_error_code		code;
 }						t_error;
 
 typedef t_error			*(*t_test_func)(void);

@@ -92,7 +92,7 @@ all: $(NAME)
 
 $(NAME): $(UNITS_O)
 	$(LNK) $(NAME) $^
-	make -C tests
+	make -C tests && cd tests && (sh test.sh ; cd ..)
 
 %.o: $(SRC_DIR)/%.c
 	$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
