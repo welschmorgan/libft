@@ -17,10 +17,10 @@ void	do_test(char const *a, char const *b)
 	verif_buf = ft_strdup(a);
 	verif_buf2 = ft_strdup(a);
 	ra = ft_strlcat(verif_buf, b, ft_strlen(b));
-	rb = strlcat(verif_buf2, b, ft_strlen(b));
+	rb = ft_strlcat(verif_buf2, b, ft_strlen(b));
 	stream = strcmp(verif_buf, verif_buf2) == 0 ? stdout : stderr;
 	fprintf(stream,
-			"Catted %s to %s: libft: %i - libc: %i\n",
+			"LCatted %s to %s: libft: %i - libc: %i\n",
 			b,
 			a,
 			(int)ra,
