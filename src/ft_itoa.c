@@ -12,25 +12,48 @@
 
 #include "libft.h"
 
+int		ft_nbr_size(int dig)
+{
+	int			ret;
+	int			temp;
+
+	temp = dig;
+	while (temp)
+	{
+		ret++;
+		temp /= 10;
+	}
+	return (ret);
+}
+
 char	*ft_itoa(int n)
 {
-	int		sign;
-	char	*str;
+	char*	ret;
+	int		num_chars;
+	int		negative;
 
-	str = ft_strnew(32);
-	sign = (n < 0);
-	if (n == 0)
-		*(str++) = '0';
-	else if (n < 0)
+	negative = 0;
+	num_chars = 0;
+	ret = NULL;
+	if (n < 0)
 	{
-		*(str++) = '-';
-		n = -1;
+		n = -n;
+		negative = 1;
+		num_chars++;
 	}
-	while (n > 0)
+	num_chars += ft_nbr_size(n);
+	ret = ft_strnew(num_chars + 1);
+	ret[num_chars] = '\0';
+ 
+	if (negative)
+		ret[0] = '-';
+ 
+	int i = num_chars - 1;
+	while (n)
 	{
-		*(str++) = '0' + (n % 10);
+		ret[i--] = n%10 + '0';
 		n /= 10;
 	}
-	*str = '\0';
-	return (str);
+ 
+	return ret;
 }

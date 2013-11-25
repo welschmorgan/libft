@@ -67,12 +67,6 @@ UNITS = ft_memcpy.c \
 		ft_putstr_fd.c \
 		ft_putnbr.c \
 		ft_putnbr_fd.c \
-		ft_putlong.c \
-		ft_putlong_fd.c \
-		ft_putulong.c \
-		ft_putulong_fd.c \
-		ft_putuint.c \
-		ft_putuint_fd.c \
 		ft_putendl.c \
 		ft_putendl_fd.c \
 		\
@@ -92,20 +86,22 @@ FLAGS = -Wall -Wextra -Werror -g -std=c89
 LNK = ar rcs
 CC = cc
 
-.PHONY: clean fclean all re
-
 all: $(NAME)
+
+.PHONY: clean fclean all re tests
 
 $(NAME): $(UNITS_O)
 	$(LNK) $(NAME) $^
+	make -C tests
 
 %.o: $(SRC_DIR)/%.c
 	$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
 
 clean:
 	/bin/rm -f $(OBJS)
+	make clean -C tests
 
 fclean : clean
 	/bin/rm -f $(NAME)
-
+	make fclean -C tests
 re: fclean all

@@ -1,6 +1,6 @@
 NAME=atoi.app
 CC=gcc -Wall -Werror -Wextra -pedantic -std=c89 -g
-SRCS=*.c
+SRCS=*.c ../*.c
 OBJS=$(SRCS=*.c:*.o)
 INC=-I../ -I../../
 LIBS=../../libft.a

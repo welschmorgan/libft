@@ -17,7 +17,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char		*pdest;
 	const unsigned char	*psrc;
 
-	INSIDE(memcpy);
 	if (!dest || !n)
 		return (dest);
 	pdest = dest;

@@ -17,7 +17,6 @@ void	*ft_memalloc(size_t size)
 {
 	void		*ptr;
 
-	INSIDE(memalloc);
 	ptr = malloc(size);
 	if (!ptr)
 		return (NULL);

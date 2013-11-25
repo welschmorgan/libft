@@ -33,11 +33,6 @@ typedef enum			s_bool
 	TRUE
 }						t_bool;
 
-/*
- * content: data of the node
- * content_size: data size of the node
- * next: pointer to next element, or NULL for end
- */
 typedef struct			s_list
 {
 	void				*content;
@@ -57,12 +52,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
  * Returns 1 if a is inside b
  */
 int		ft_memoverlap(void *a, const void *b, size_t count);
-
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void **ap);
-/*
- * Memory functions
- */
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
@@ -104,11 +95,9 @@ char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 
-/* Others */
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
 
-/* Char manip funcs */
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_isprint(int c);
@@ -121,25 +110,14 @@ void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
 void	ft_putnbr(int num);
-void	ft_putuint(unsigned int num);
-void	ft_putulong(unsigned long num);
-void	ft_putlong(long num);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const * s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int num, int fd );
-void	ft_putuint_fd(unsigned int num, int fd);
-void	ft_putulong_fd(unsigned long num, int fd);
-void	ft_putlong_fd(long num, int fd);
 
-/*
- * MISC FUNCS
- */
 void	ft_swapc(char *a, char *b);
 void	ft_swapi(int *a, int *b);
 char	*ft_strrev(char *str);
-
-# define INSIDE(func) ft_putendl("Inside function " #func);
 
 #endif /* !LIBFT__H */
