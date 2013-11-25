@@ -1,3 +1,6 @@
 *.o
 *.a
 *~
+src/*~
+tests/*/*~
+tests/*/*.o
