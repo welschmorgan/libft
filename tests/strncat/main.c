@@ -43,10 +43,10 @@ int	main(void)
 	printf("Testing '%s':\n", FUNC_NAME);
 	print_hr();
 
-	do_test("Bite", "Molle");
-	do_test("", "Molle");
-	do_test("Bite", "");
-	do_test("", "");
+	do_test("Bite", "Molle", 5);
+	do_test("", "Molle", 2);
+	do_test("Bite", "", 0);
+	do_test("", "", 10);
 
 	print_hr();
 	return (0);
