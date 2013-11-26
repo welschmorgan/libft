@@ -11,22 +11,25 @@ void	do_test(char const *a, char const *b, size_t max)
 	char	*verif_buf2;
 	size_t	len;
 
+	len = ft_strlen(a) + ft_strlen(b);
+	len = max < len ? max : len;
 	verif_buf = ft_strnew(len);
 	verif_buf2 = ft_strnew(len);
 
-	ft_strncpy(verif_buf, a);
-	strncpy(verif_buf2);
+	ft_strncpy(verif_buf, a, max);
+	strncpy(verif_buf2, a, max);
 
-	ft_strncat(verif_buf, b);
-	strncat(verif_buf2, b);
+	ft_strncat(verif_buf, b, max);
+	strncat(verif_buf2, b, max);
 
 	stream = strcmp(verif_buf, verif_buf2) == 0 ? stdout : stderr;
 
 	fprintf(stream,
-			"N-Catted %s to %s (max %i): libft: %s - libc: %s\n",
+			"N-Catted %s to %s (max %i/len %i): libft: %s - libc: %s\n",
 			b,
 			a,
 			(int)max,
+			(int)len,
 			verif_buf,
 			verif_buf2);
 

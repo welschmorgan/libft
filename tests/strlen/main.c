@@ -13,7 +13,7 @@ void	do_test(char const *a)
 
 	ra = ft_strlen(a);
 	rb = strlen(a);
-	stream = ra == b ? stdout : stderr;
+	stream = ra == rb ? stdout : stderr;
 	fprintf(stream,
 			"Len of '%s': libft: %i - libc: %i\n",
 			a,
@@ -28,7 +28,7 @@ int	main(void)
 	print_hr();
 
 	do_test("Bite");
-	do_test("", "Molle");
+	do_test("");
 
 	print_hr();
 	return (0);
