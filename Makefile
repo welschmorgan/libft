@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/26 17:41:35 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/26 19:22:49 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -74,6 +74,8 @@ UNITS = ft_memcpy.c \
 		ft_lstdel.c \
 		ft_lstdelone.c \
 		ft_lstnew.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
 		\
 		ft_strrev.c \
 		ft_itoa.c \
@@ -92,23 +94,14 @@ all: $(NAME)
 
 $(NAME): $(UNITS_O)
 	@$(LNK) $(NAME) $^
-	make re -C tests && (cd tests; sh test.sh; cd ..)
-	make re -C unit_test
-	make re -C maintest
 
 %.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
 
 clean:
 	@/bin/rm -f $(OBJS)
-	make clean -C tests
-	make clean -C unit_test
-	make clean -C maintest
 
 fclean : clean
 	@/bin/rm -f $(NAME)
-	make fclean -C tests
-	make fclean -C unit_test
-	make fclean -C maintest
 
 re: fclean all

@@ -6,25 +6,37 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 19:21:32 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/26 16:43:33 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/26 19:56:14 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strstr(char const *a, char const *b)
+char	*ft_strstr(char const *hstack, char const *needle)
 {
-	char	*ptr;
+	char	*orig;
 
-	ptr = (char*)a;
-	if (!a || !b)
+	if (!needle)
+		return ((char*)hstack);
+	if (!hstack)
 		return (NULL);
-	while ((ptr = strchr(ptr, *b)))
+	orig = NULL;
+	while (*hstack)
 	{
-		if (ft_strncmp(ptr, b, ft_strlen(b)))
-			return (ptr);
-		ptr ++;
+		if (*hstack == *needle)
+		{
+			orig = (char*)hstack;
+			while (*hstack == *needle)
+			{
+				hstack ++;
+				needle ++;
+			}
+			if (*hstack == *needle && *needle == '\0')
+				return (orig);
+		}
+		else
+			hstack++;
 	}
 	return (NULL);
 }
