@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 14:35:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/11/20 14:42:56 by mwelsch          ###   ########.fr       */
+/*   Updated: 2013/11/26 17:32:38 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 {
 	const unsigned char	*psrc;
 	unsigned char		*pdest;
+	unsigned char		i;
 
-	if (!s1 || !n)
-		return (s1);
-	psrc = (unsigned char*)s2;
-	pdest = (unsigned char *)s1;
-	while (psrc && n--)
+	if (!n)
+		return (NULL);
+	psrc = (const t_uchar *)s2;
+	pdest = (t_uchar *)s1;
+	i = (size_t)c;
+	while (--n)
 	{
-		*pdest = *psrc;
-		if (*psrc == (unsigned char)c)
-			return ((void*)(pdest + 1));
-		psrc ++;
-		pdest ++;
+		if ((*pdest++ = *psrc++) == i)
+			return (pdest);
 	}
 	return (NULL);
 }

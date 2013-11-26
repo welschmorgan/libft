@@ -1,13 +1,13 @@
 NAME = maintest
-EXTRA = -std=c89 -pedantic -O3 -I../ -L../ -lft
+EXTRA = -Wall -Werror -Wextra -std=c89 -pedantic -O3 -g -I../
 
 all: $(NAME)
 
 $(NAME): main.o
-	$(CC) main.o $(EXTRA) -o $(NAME)
+	gcc $(EXTRA) main.o -o $(NAME) -L../ -lft
 
 main.o: main.c
-	$(CC) main.c -c $(EXTRA) -o main.o
+	gcc $(EXTRA) main.c -c -o main.o
 
 clean:
 	rm -f *.o

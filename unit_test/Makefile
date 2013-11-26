@@ -2,7 +2,7 @@
 
 NAME = unit_test
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -pedantic -O3 -I./..
+CFLAGS = -Wall -Werror -Wextra -pedantic -O3 -std=c89 -I./.. -g
 LDFLAGS = -L./.. -lft
 SOURCE = main.c unit_test.c
 OBJ = $(SOURCE:.c=.o)

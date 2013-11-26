@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/26 16:56:58 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/26 17:41:35 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -95,8 +95,6 @@ $(NAME): $(UNITS_O)
 	make re -C tests && (cd tests; sh test.sh; cd ..)
 	make re -C unit_test
 	make re -C maintest
-	sh ./unit_test/unit_test
-	sh ./maintest/maintest
 
 %.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
