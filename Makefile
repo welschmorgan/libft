@@ -91,17 +91,17 @@ all: $(NAME)
 .PHONY: clean fclean all re tests
 
 $(NAME): $(UNITS_O)
-	$(LNK) $(NAME) $^
+	@$(LNK) $(NAME) $^
 	make -C tests && cd tests && (sh test.sh ; cd ..)
 
 %.o: $(SRC_DIR)/%.c
-	$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
+	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
 
 clean:
-	/bin/rm -f $(OBJS)
+	@/bin/rm -f $(OBJS)
 	make clean -C tests
 
 fclean : clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 	make fclean -C tests
 re: fclean all

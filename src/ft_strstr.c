@@ -11,7 +11,22 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strstr(const char *s1, const char *s2)
 {
+	const char	*ptr = s1;
+	size_t		len = ft_strlen(s2);
+
+	while ((ptr = ((const char*)ft_strchr (ptr, *s2))) != 0)
+	{
+		printf("Testing %i chars in %s\n", (int)len, ptr);
+		if (!ft_strncmp(ptr, s2, len))
+		{
+			printf("\tFound: %s\n", ptr);
+			return ((char *)ptr);
+		}
+		ptr ++;
+	}
+	return (NULL);
 }
