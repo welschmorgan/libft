@@ -3,20 +3,19 @@
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	char	*ptr;
-	t_bool	eol;
+	size_t	i;
 
+	i = 0;
 	ptr = dest;
-	eol = FALSE;
-	while (ptr && *ptr && src && n--)
+	while (i < n && src && *src)
 	{
-		if (*src == '\0')
-			eol = TRUE;
-		if (eol)
-			*(ptr++) = '\0';
-		else
-			*(ptr++) = *(src++);
+		dest[i] = src[i];
+		i ++;
 	}
-	if (ptr)
-		*ptr = '\0';
-	return (dest);
+	while (i < n && src)
+	{
+		dest[i] = '\0';
+		i ++;
+	}
+	return (ptr);
 }

@@ -2,9 +2,11 @@
 
 char	*ft_strncat(char *dest, const char *src, size_t n)
 {
-	size_t	len;
+	char	*p_cur;
 
-	len = ft_strlen(src);
-	ft_strncpy(dest + len, src, (len > n ? n : len));
+	p_cur = dest + ft_strlen(dest);
+	while (n -- && p_cur && src && *src)
+		*(p_cur ++) = *(src ++);
+	*p_cur = '\0';
 	return (dest);
 }

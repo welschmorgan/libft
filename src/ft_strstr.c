@@ -14,19 +14,4 @@
 
 char	*ft_strstr(const char *s1, const char *s2)
 {
-	const char	*orig;
-
-	while (s1 && *s1 && s2 && *s2)
-	{
-		if (*s1 == *s2)
-			orig = s1;
-		while (*s1 == *s2)
-		{
-			s1 ++;
-			s2 ++;
-		}
-		if (*s2 == '\0')
-			return ((char*)orig);
-	}
-	return (NULL);
 }
