@@ -9,6 +9,8 @@ char	*do_strstr(char const *a, char const *b)
 	char	*ptr;
 
 	ptr = (char*)a;
+	if (!a || !b)
+		return (NULL);
 	while ((ptr = strchr(ptr, *b)))
 	{
 		if (ft_strncmp(ptr, b, ft_strlen(b)))

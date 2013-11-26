@@ -11,7 +11,7 @@ void	do_test(const char *a, const char *b, size_t max)
 	ra = ft_strncmp(a, b, max);
 	rb = ((a && b) ? strncmp(a, b, max) : 0);
 	fprintf(ra == rb ? stdout : stderr,
-			"Comparing %s with %s (max %i):\n\tlibft: %i\n\tlibc: %i\n",
+			"Comparing %s with %s (max %i): libft: %i | libc: %i\n",
 			a, b, (int)max, ra, rb);
 }
 

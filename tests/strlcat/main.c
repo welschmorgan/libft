@@ -8,18 +8,20 @@ size_t strlcat(char *dest, const char *src, size_t size);
 
 void	do_test(char const *a, char const *b)
 {
-	FILE	*stream;
 	char	*verif_buf;
 	char	*verif_buf2;
 	size_t	ra;
 	size_t	rb;
+	size_t	len;
 
-	verif_buf = ft_strdup(a);
-	verif_buf2 = ft_strdup(a);
-	ra = ft_strlcat(verif_buf, b, ft_strlen(b));
-	rb = ft_strlcat(verif_buf2, b, ft_strlen(b));
-	stream = strcmp(verif_buf, verif_buf2) == 0 ? stdout : stderr;
-	fprintf(stream,
+	len = ft_strlen(a) + ft_strlen(b);
+	verif_buf = ft_strnew(len);
+	verif_buf2 = ft_strnew(len);
+	ft_strncpy(verif_buf, a, len);
+	strncpy(verif_buf2, a, len);
+	ra = ft_strlcat(verif_buf, b, len);
+	rb = ft_strlcat(verif_buf2, b, len);
+	fprintf(((strcmp(verif_buf, verif_buf2) == 0) ? stdout : stderr),
 			"LCatted %s to %s: libft: %i - libc: %i\n",
 			b,
 			a,

@@ -1,10 +1,11 @@
 #ifndef TESTS_COMMON_H
 # define TESTS_COMMON_H
 
-#include "libft.h"
-#include <stdio.h>
+# include "libft.h"
+# include <stdio.h>
 
-#define					ERR_CODE_MAXLEN 15
+
+# define					ERR_CODE_MAXLEN 15
 
 typedef enum			e_error_code
 {
