@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/26 14:26:37 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/26 15:54:13 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -82,7 +82,7 @@ UNITS = ft_memcpy.c \
 UNITS_O = $(UNITS:.c=.o)
 SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
 OBJS = $(patsubst %,%,$(UNITS_O))
-FLAGS = -Wall -Wextra -Werror -g -std=c89
+FLAGS = -Wall -Wextra -Werror -g -std=c89 -O3
 LNK = ar rcs
 CC = cc
 
