@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/24 22:11:18 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/26 14:26:37 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -92,7 +92,7 @@ all: $(NAME)
 
 $(NAME): $(UNITS_O)
 	@$(LNK) $(NAME) $^
-	make -C tests && cd tests && (sh test.sh ; cd ..)
+	make re -C tests && (cd tests; sh test.sh; cd ..)
 
 %.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<

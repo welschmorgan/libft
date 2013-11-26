@@ -4,12 +4,26 @@
 
 #define FUNC_NAME "strstr"
 
+char	*do_strstr(char const *a, char const *b)
+{
+	char	*ptr;
+
+	ptr = (char*)a;
+	while ((ptr = strchr(ptr, *b)))
+	{
+		if (ft_strncmp(ptr, b, ft_strlen(b)))
+			return (ptr);
+		printf("%s found in %s at %s\n", b, a, ptr);
+		ptr ++;
+	}
+	return (NULL);
+}
 void	do_test(char const *a, char const *b)
 {
 	printf("Searching for %s in %s:\n\tlibft: %s\n\tlibc: %s\n",
-		   a,
 		   b,
-		   ft_strstr(a, b),
+		   a,
+		   do_strstr(a, b),
 		   a && b ? strstr(a, b) : NULL);
 }
 

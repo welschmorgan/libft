@@ -1,4 +1,4 @@
-NAME=strcmp.app
+NAME=strncmp.app
 CC=gcc -Wall -Werror -Wextra -pedantic -std=c89 -g
 SRCS= ../common.c *.c
 INC=-I../ -I../../

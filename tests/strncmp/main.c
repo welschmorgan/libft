@@ -2,7 +2,7 @@
 #include "common.h"
 #include <ctype.h>
 
-#define FUNC_NAME "strcmp"
+#define FUNC_NAME "strncmp"
 
 void	do_test(const char *a, const char *b, size_t max)
 {
@@ -26,7 +26,7 @@ int	main(void)
 	do_test("Serviettes", "Torchons",20);
 	do_test("Se", "",0);
 	do_test("", "",20);
-	do_test(NULL, NULL);
+	do_test(NULL, NULL, 0);
 
 	print_hr();
 	return (0);
