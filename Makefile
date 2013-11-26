@@ -6,7 +6,7 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2013/11/26 15:54:13 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/26 16:56:58 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -93,6 +93,10 @@ all: $(NAME)
 $(NAME): $(UNITS_O)
 	@$(LNK) $(NAME) $^
 	make re -C tests && (cd tests; sh test.sh; cd ..)
+	make re -C unit_test
+	make re -C maintest
+	sh ./unit_test/unit_test
+	sh ./maintest/maintest
 
 %.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -c -I$(INC) -o $@ $<
@@ -100,8 +104,13 @@ $(NAME): $(UNITS_O)
 clean:
 	@/bin/rm -f $(OBJS)
 	make clean -C tests
+	make clean -C unit_test
+	make clean -C maintest
 
 fclean : clean
 	@/bin/rm -f $(NAME)
 	make fclean -C tests
+	make fclean -C unit_test
+	make fclean -C maintest
+
 re: fclean all
