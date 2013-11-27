@@ -6,14 +6,13 @@
 #    By: amerle <amerle@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:29:45 by amerle            #+#    #+#              #
-#    Updated: 2013/11/26 18:53:51 by mwelsch          ###   ########.fr        #
+#    Updated: 2013/11/27 18:52:41 by mwelsch          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
+LIBDIR = ../
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -I$(LIBDIR)
 LD = $(CC)
-LIBDIR = ../
 LDFLAGS = -L$(LIBDIR) -lft
 NAME = unit_test
 
