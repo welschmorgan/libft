@@ -6,7 +6,7 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 14:30:51 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/13 19:59:30 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/15 11:55:29 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ int					ft_vsnprintf_extract_width(t_vsnprintf_env *env)
 	pos = 0;
 	ft_memset(wstr, 0, 32);
 	while (env->format && *env->format
-		   && ft_isdigit(*env->format)
-		   && pos < 32)
+		&& ft_isdigit(*env->format)
+		&& pos < 32)
 		wstr[pos++] = *env->format++;
 	wstr[pos] = 0;
-	/*env->counter += pos;
-	  env->offset += pos;*/
 	return (ft_atoi(wstr));
 }

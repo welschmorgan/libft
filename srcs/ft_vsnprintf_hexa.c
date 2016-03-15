@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 03:22:47 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/13 20:07:49 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/15 12:30:19 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +15,7 @@
 #include <libft_string.h>
 #include <libft_converters.h>
 
-static long			ft_vsnprintf_hexa1(t_vsnprintf_env *env,
+static long				ft_vsnprintf_hexa1(t_vsnprintf_env *env,
 										long i,
 										int caps)
 {

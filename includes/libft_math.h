@@ -6,7 +6,7 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 10:46:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/15 10:47:02 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/15 12:57:57 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ typedef	struct				s_float_iee754
 
 t_float_iee754				*ft_float_iee754_init(t_float_iee754 *f,
 												  float v, int precision);
+t_float_iee754				*ft_float_iee754_init_fiddle(t_float_iee754 *f);
+t_float_iee754				*ft_float_iee754_init_fiddle_exp(t_float_iee754 *f);
 
 char						*ft_float_iee754_string_whole(t_float_iee754 *f);
-char						*ft_float_iee754_string_decimal(t_float_iee754 *f);
+char						*ft_float_iee754_string_finalize(t_float_iee754 *f, char *dec);
+char						*ft_float_iee754_string_decdo(t_float_iee754 *f, char *dec);
+char						*ft_float_iee754_string_dec(t_float_iee754 *f);
 
 void						ft_float_iee754_round(t_float_iee754 *f);
 int							ft_float_iee754_len(t_float_iee754 *f);
@@ -63,8 +67,8 @@ int							ft_float_iee754_len(t_float_iee754 *f);
 char						*ft_float_iee754_string(t_float_iee754 *f);
 
 int							ft_float_iee754_iszero(t_float_iee754 *f);
+int							ft_float_iee754_cmp(t_float_iee754 *f, float to);
 
 int							ft_floor(int n);
-
 
 #endif

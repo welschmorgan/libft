@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:01:21 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/12 20:22:16 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/15 12:28:57 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char						*ft_strnround(char *str, size_t n, int precision)
 	next = cur + 1;
 	carry = 0;
 	while (cur >= str
-		   && *next > '5'
-		   && *next <= '9')
+		&& (*next > '5'
+			&& *next <= '9'))
 	{
 		carry = (((*cur + 1) - '0') % 10) == 0;
 		*cur = (carry ? '0' : (*cur + 1));

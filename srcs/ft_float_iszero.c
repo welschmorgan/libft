@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vfprintf.c                                      :+:      :+:    :+:   */
+/*   ft_float.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/12 15:14:33 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/15 12:29:43 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/03/11 20:48:11 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/03/15 11:37:08 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft_printf.h>
-#include <libft_string.h>
+#include "libft.h"
 
-int				ft_vfprintf(int fd, const char *fmt, va_list args)
+int							ft_float_iee754_iszero(t_float_iee754 *f)
 {
-	static char	buf[1024] = {0};
-	int			ret;
+	return (!ft_float_iee754_cmp(f, 0.0f));
+}
 
-	ret = ft_vsnprintf(buf, 1024, fmt, args);
-	ft_putstr_fd(buf, fd);
-	return (ret);
+int							ft_float_iee754_cmp(t_float_iee754 *f, float to)
+{
+	if (!f)
+		return (-1);
+	if (f
+		&& f->value.f > (to - FT_FLOAT_TOLERANCE)
+		&& f->value.f < (to + FT_FLOAT_TOLERANCE))
+		return (0);
+	if (f->value.f < (to - FT_FLOAT_TOLERANCE))
+		return (-1);
+	return (1);
 }

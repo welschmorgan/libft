@@ -6,15 +6,15 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 13:24:01 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/15 10:35:03 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/15 11:56:28 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft_string.h"
 
 char	*ft_strpad_l(char *str,
-					 size_t const n,
-					 char const c)
+					size_t const n,
+					char const c)
 {
 	size_t	len;
 	char	*pstr;
@@ -40,8 +40,8 @@ char	*ft_strpad_l(char *str,
 }
 
 char	*ft_strpad_r(char *str,
-					 size_t const n,
-					 char const c)
+					size_t const n,
+					char const c)
 {
 	char	*pstr;
 	char	*pend;
@@ -59,8 +59,8 @@ char	*ft_strpad_r(char *str,
 }
 
 char	*ft_strpad(char *str,
-				   size_t const n,
-				   char const c)
+				size_t const n,
+				char const c)
 {
 	size_t	delta;
 
