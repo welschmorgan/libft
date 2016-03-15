@@ -1,0 +1,12 @@
+putstr
+putendl
+putchar
+putnbr
+putstr_fd
+putendl_fd
+putchar_fd
+putnbr_fd
+isupper
+islower
+isdigit
+number_length

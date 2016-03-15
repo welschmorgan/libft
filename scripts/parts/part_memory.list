@@ -1,0 +1,10 @@
+memalloc
+memccpy
+memchr
+memcmp
+memcpy
+memdel
+memdup
+memmove
+memrealloc
+memset

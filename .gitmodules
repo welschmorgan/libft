@@ -1,0 +1,3 @@
+[submodule "moulitest"]
+	path = moulitest
+	url = ./moulitest

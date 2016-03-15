@@ -6,137 +6,223 @@
 #    By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 14:02:18 by mwelsch           #+#    #+#              #
-#    Updated: 2014/02/28 15:56:51 by mwelsch          ###   ########.fr        #
+#    Updated: 2016/03/15 10:44:16 by mwelsch          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = libft.a
 NAME_D = libft_d.a
 
-INC_DIR = ./inc
-SRC_DIR = ./src
-OBJ_DIR = ./obj
+NORM_FILE = .last-norm
+
+INC_DIR = includes
+SRC_DIR = srcs
+
+DIST_DIR = dist
+
+COUNT=0
+
+DIST_FUNCS_LIST=$(shell find scripts/parts -name 'part_*.list' -exec cat {} \;)
+DIST_INC_PRIO=bool types platform config math memory
+DIST_INC_PREFIX=$(patsubst %,libft_%.h,$(DIST_INC_PRIO))
+
+SRCS = $(shell ls $(SRC_DIR) | grep \.c)
+INCS_ = $(DIST_INC_PREFIX) $(shell ls $(INC_DIR) | grep \.h | grep -v libft\.h)
+INCS = $(shell echo $(INCS_) | tr ' ' '\n' | cat -n - | sort -uk2 | sort -nk1 | cut -f2-)
+
+OBJ_DIR = objs
 OBJ_DEBUG_DIR = $(OBJ_DIR)/debug
 OBJ_RELEASE_DIR = $(OBJ_DIR)/release
+OBJS = $(patsubst %.c,$(OBJ_RELEASE_DIR)/%.o,$(SRCS))
+OBJS_D = $(patsubst %.c,$(OBJ_DEBUG_DIR)/%.o,$(SRCS))
+NOBJS = $(shell echo $(OBJS) | wc -w)
 
-UNITS = ft_ftoa.c            ft_atoi.c \
-	ft_putchar_fd.c \
-	ft_atol.c                ft_putendl.c \
-	ft_bzero.c               ft_putendl_fd.c \
-	ft_dlist_add_back.c      ft_dlist_dup.c \
-	ft_dlist_add_front.c     ft_dlist_init.c \
-	ft_dlist_clear.c         ft_dlist_node.c \
-	ft_dlist_copy.c          ft_dlist_remove.c \
-	ft_dlist_destroy.c       ft_putnbr.c \
-	ft_dlist_node.c          ft_putnbr_fd.c \
-	ft_dlist_new.c \
-	ft_error.c               ft_putstr.c \
-	ft_file_access.c         ft_putstr_fd.c \
-	ft_readdir.c \
-	ft_fprintf.c             ft_realloc.c \
-	ft_getline.c \
-	ft_isalnum.c             ft_strcat.c \
-	ft_isalpha.c             ft_strchr.c \
-	ft_isanyof.c             ft_strclr.c \
-	ft_isascii.c             ft_strcmp.c \
-	ft_isdigit.c             ft_strcpy.c \
-	ft_isempty.c             ft_strdel.c \
-	ft_islower.c             ft_strdup.c \
-	ft_isprint.c             ft_strempty.c \
-	ft_isspace.c             ft_strequ.c \
-	ft_isupper.c             ft_strfind.c \
-	ft_itoa.c                ft_striter.c \
-	ft_lstadd.c              ft_striteri.c \
-	ft_lstback.c             ft_strjoin.c \
-	ft_lstdel.c              ft_strlcat.c \
-	ft_lstdelone.c           ft_strlen.c \
-	ft_lsteq.c               ft_strmap.c \
-	ft_lstfront.c            ft_strmapi.c \
-	ft_lstiter.c             ft_strmatch.c \
-	ft_lstlast.c             ft_strncat.c \
-	ft_lstmap.c              ft_strncmp.c \
-	ft_lstneq.c              ft_strncpy.c \
-	ft_lstnew.c              ft_strndup.c \
-	ft_lstpop_back.c         ft_strnequ.c \
-	ft_lstpop_front.c        ft_strnew.c \
-	ft_lstpush_back.c        ft_strnstr.c \
-	ft_lstpush_front.c       ft_strrchr.c \
-	ft_lstsize.c             ft_strrev.c \
-	ft_memalloc.c            ft_strsplit.c \
-	ft_memccpy.c             ft_strstr.c \
-	ft_memchr.c              ft_strsub.c \
-	ft_memcmp.c              ft_strtok.c \
-	ft_memcpy.c              ft_strtolower.c \
-	ft_memdel.c              ft_strtoupper.c \
-	ft_memdup.c              ft_strtrim.c \
-	ft_strrtrim.c            ft_strltrim.c \
-	ft_strrot.c              ft_strfind_any.c \
-	ft_memmove.c             ft_swap.c \
-	ft_memrealloc.c          ft_tokdel.c \
-	ft_memset.c              ft_tolower.c \
-	ft_ntoa.c                ft_toupper.c \
-	ft_number_length.c       ft_version.c \
-	ft_opendir.c             ft_vfprintf.c \
-	ft_parse_printf_char.c   ft_vprintf.c \
-	ft_printf.c              ft_vsnprintf.c \
-	ft_printf_do_bool.c      ft_vsnprintf_char.c \
-	ft_printf_do_char.c      ft_vsnprintf_float.c \
-	ft_printf_do_int.c       ft_vsnprintf_hexa.c \
-	ft_printf_do_numbers.c   ft_vsnprintf_loop.c \
-	ft_printf_do_pointers.c  ft_vsnprintf_signed.c \
-	ft_printf_do_string.c    ft_vsnprintf_step.c \
-	ft_printf_parse_width.c  ft_vsnprintf_string.c \
-	ft_putchar.c             ft_vsnprintf_unsigned.c
+VERSION_FILE=.version
+VERSION_CHANGES = .changelog
 
-UNITS_O = $(UNITS:.c=.o)
+VERSION_MAJOR = 1
+VERSION_MINOR = 0
+VERSION_BUILD = $(shell cat $(VERSION_FILE))
+REV=$(shell date +'%l%M')
+VERSION_REV = $(shell echo $(REV) | tr -d ' ')
 
-SRCS = $(patsubst %,$(SRC_DIR)/%,$(UNITS))
-OBJS = $(patsubst %,$(OBJ_RELEASE_DIR)/%,$(UNITS_O))
-OBJS_D = $(patsubst %,$(OBJ_DEBUG_DIR)/%,$(UNITS_O))
+VERSION_TIME = $(shell date +'%H:%M:%S')
+VERSION_DATE = $(shell date +'%Y/%m/%d')
 
-include Version.mak
+VERSION_FLAGS = -D__VERSION_DATE=$(VERSION_DATE)
+VERSION_FLAGS += -D__VERSION_BUILD=$(VERSION_BUILD)
+VERSION_FLAGS += -D__VERSION_MAJOR=$(VERSION_MINOR)
+VERSION_FLAGS += -D__VERSION_MINOR=$(VERSION_MAJOR)
+VERSION_FLAGS += -D__VERSION_REV=$(VERSION_REV)
 
-FLAGS = -Wall -Wextra -Werror -std=c89 -pedantic $(VERSION_FLAGS)
+FLAGS = -Wall -Wextra -Werror -std=c89 $(VERSION_FLAGS)
 CFLAGS = $(FLAGS)
-CFLAGS_D = $(FLAGS) -ggdb -D_DEBUG
-
-CC = clang $(CFLAGS)
-CC_D = clang $(CFLAGS_D)
+CFLAGS_D = $(FLAGS) -g -ggdb -D_DEBUG
+CC = gcc
 LD = ar rcs
 RM = /bin/rm -f
 
-all: $(NAME) $(NAME_D)
+default: release
+all: release debug
 
 debug: $(NAME_D)
 release: $(NAME)
 
+norme:
+	@norminette $(SRC_DIR) $(INC_DIR) Makefile > $(NORM_FILE)
+	@echo "$$(grep Error $(NORM_FILE) | wc -l) error(s) detected."
+	@echo "$$(grep Warning $(NORM_FILE) | wc -l) warning(s) detected."
+	@read -p "View $(NORM_FILE)? [Yn]" ANS; [[ $$ANS == "y" || $$ANS == "Y" || $$ANS == "" ]] && less $(NORM_FILE)
+
 $(NAME): $(OBJS) $(VERSION_FILE)
-	@printf "\r\033[KLinking $@\n"
-	@$(LD) $@ $^
+	@PRCT=$$(echo "scale=1; $(COUNT) / $(NOBJS) * 100" | bc); \
+	printf "\r\033[K[$(CC)|%s%%]Linking $@\n" "$$PRCT"; \
+	$(LD) $@ $^; \
+	printf "\r\033[K[$(CC)|%s%%]Linked $@\n" "$$PRCT"
+
 
 $(NAME_D): $(OBJS_D) $(VERSION_FILE)
-	@printf "\r\033[KLinking $@\n"
-	@$(LD) $@ $^
+	@PRCT=$$(echo "scale=1; $(COUNT) / $(NOBJS) * 100" | bc); \
+	printf "\r\033[K[$(CC)|%s%%]Linking $@\n" "$$PRCT"; \
+	$(LD) $@ $^; \
+	printf "\r\033[K[$(CC)|%s%%]Linked $@\n" "$$PRCT"
 
 $(OBJ_DEBUG_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "\r\033[KCompiling $< into $@"
-	@$(CC_D) -c -I$(INC_DIR) -o $@ $<
+	@PRCT=$$(echo "scale=1; $(COUNT) / $(NOBJS) * 100" | bc); \
+	$$(test -e "$(OBJ_DEBUG_DIR)" || mkdir -p $(OBJ_DEBUG_DIR)); \
+	printf "\r\033[K[$(CC)|%s%%]Compiling $< into $@" "$$PRCT"; \
+	$(CC) $(CFLAGS_D) -c -I$(INC_DIR) -o $@ $<; \
+	$(eval COUNT = $(shell echo "$(COUNT) + 1" | bc) ) \
+	printf "\r\033[K[$(CC)|%s%%]Compiled $< into $@" "$$PRCT"
 
 $(OBJ_RELEASE_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "\r\033[KCompiling $< into $@"
-	@$(CC) -c -I$(INC_DIR) -o $@ $<
+	@PRCT=$$(echo "scale=1; $(COUNT) / $(NOBJS) * 100" | bc); \
+	$$(test -e "$(OBJ_RELEASE_DIR)" || mkdir -p $(OBJ_RELEASE_DIR)); \
+	printf "\r\033[K[$(CC)|%s%%]Compiling $< into $@" "$$PRCT"; \
+	$(CC) $(CFLAGS) -c -I$(INC_DIR) -o $@ $<; \
+	$(eval COUNT = $(shell echo "$(COUNT) + 1" | bc) ) \
+	printf "\r\033[K[$(CC)|%s%%]Compiled $< into $@" "$$PRCT"
 
+# build number file
+$(VERSION_FILE): $(OBJS)
+	@printf "\r\033[KUpdating version ($(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD).$(VERSION_REV))\n"
+	@if ! test -f $@; then echo 0 > $@; fi
+	@echo $$(($$(cat $@) + 1)) > $@
+	@if ! test -f $(VERSION_CHANGES); then touch $(VERSION_CHANGES); fi
+	@echo "Version $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD).$(VERSION_REV): Library build ($(VERSION_DATE) at $(VERSION_TIME))" | cat - $(VERSION_CHANGES) >> $(VERSION_CHANGES).tmp
+	@rm -rf $(VERSION_CHANGES)
+	@mv $(VERSION_CHANGES).tmp $(VERSION_CHANGES)
+
+version: $(VERSION_FILE)
+	@echo Current $(NAME) version: $(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD).$(VERSION_REV)
+
+test:
+	make -C test
 
 clean:
-	@echo Removing objects
-	@$(RM) $(OBJS)
-	@$(RM) $(OBJS_D)
+	@N=$$(ls $(OBJ_RELEASE_DIR) | grep '\.o' | wc -w); \
+	if [ $$N -gt 0 ]; then \
+		echo "Removing $$N object(s)."; \
+		$(RM) $(OBJS); \
+	fi
 
 fclean : clean
-	@echo Removing targets
-	@$(RM) $(NAME)
-	@$(RM) $(NAME_D)
+	@if [ -e "$(NAME)" ]; then \
+		echo Removing $(NAME); \
+		$(RM) $(NAME); \
+	fi
 
-re: fclean all
+clean_debug:
+	@N=$$(ls $(OBJ_DEBUG_DIR) | grep '\.o' | wc -w); \
+	if [ $$N -gt 0 ]; then \
+		echo "Removing $$N object(s)."; \
+		$(RM) $(OBJS_D); \
+	fi
 
-.PHONY: clean fclean all re debug release
+fclean_debug : clean_debug
+	@if [ -e "$(NAME_D)" ]; then \
+		echo Removing $(NAME_D); \
+		$(RM) $(NAME_D); \
+	fi
+
+help:
+	@printf "rules:\n"
+	@printf "\tall:\t\tsee release.\n"
+	@printf "\trelease:\t\tbuilds in release mode.\n"
+	@printf "\tdebug:\t\tbuilds in debug mode.\n"
+	@printf "\tclean:\t\tremoves all release object(s).\n"
+	@printf "\tfclean:\t\tremoves release target\n"
+	@printf "\tre:\t\tfclean + release\n"
+	@printf "\trelink:\t\trelinks all release object(s) into target.\n"
+	@printf "\tdist:\t\tcreates the rendu folder.\n"
+	@printf "\tdist_clean:\t\tcleans the rendu folder.\n"
+	@printf "\tdist_fclean:\t\tforce cleans the rendu folder.\n"
+
+re: fclean default
+
+dist: release #norme
+	@[ -d $(DIST_DIR) ] || mkdir -p $(DIST_DIR)
+	@cp scripts/make/dist.mak $(DIST_DIR)/Makefile
+	@for SRC in $(DIST_FUNCS_LIST); do \
+		FNAME=ft_$$(echo $$SRC | sed 's/ft_//' | sed 's/\.c//').c; \
+		head -n 12 $(SRC_DIR)/$$FNAME | tee $(DIST_DIR)/$${FNAME}.header > /dev/null; \
+		tail -n +13 $(SRC_DIR)/$$FNAME | grep -vi '#include' | tee $(DIST_DIR)/$${FNAME}.body > /dev/null; \
+		tail -n +13 $(SRC_DIR)/$$FNAME | grep -i '#include' | sort | uniq | tee $(DIST_DIR)/$${FNAME}.includes > /dev/null; \
+		sed -i 's/#include[ | ]\+[<|"]libft_[a-z]\+.h[>|"]/#include "libft.h"/g' $(DIST_DIR)/$${FNAME}.includes; \
+		cat $(DIST_DIR)/$${FNAME}.header | tee $(DIST_DIR)/$$FNAME > /dev/null; \
+		cat $(DIST_DIR)/$${FNAME}.includes | tee -a $(DIST_DIR)/$$FNAME > /dev/null; \
+		cat $(DIST_DIR)/$${FNAME}.body | tee -a $(DIST_DIR)/$$FNAME > /dev/null; \
+		$(RM) $(DIST_DIR)/$${FNAME}.{header,body,includes}; \
+		echo $$SRC: $$(test -e $(DIST_DIR)/$$FNAME && echo "OK" || echo "ERROR"); \
+	done
+	@echo "Catting all header files into $(DIST_DIR)/libft.h"
+	@[ -e $(DIST_DIR)/libft.h ] && $(RM) -f $(DIST_DIR)/libft.h || echo 0
+	@cat header | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo -e "\n#ifndef LIBFT_H" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define LIBFT_H" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define VERSION_MAJOR $(VERSION_MAJOR)" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define VERSION_MINOR $(VERSION_MINOR)" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define VERSION_BUILD $(VERSION_BUILD)" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define VERSION_REV $(VERSION_REV)" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@echo "# define VERSION_STRING \"$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD).$(VERSION_REV)\"" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@for HEADER in $(INCS); do \
+		echo $$HEADER: $$(tail -n +15 $(INC_DIR)/$$HEADER | head -n -1 | tee -a $(DIST_DIR)/libft.h > /dev/null && echo "OK" || echo "ERROR"); \
+	done
+	@echo "#endif" | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@grep -Pzo "#ifndef LIBFT_[a-zA-Z_]*_H[\n]+# define LIBFT_[a-zA-Z_]*_H" $(DIST_DIR)/libft.h | tee $(DIST_DIR)/hguards.list > /dev/null
+	@echo "Found $$(cat $(DIST_DIR)/hguards.list | grep ifndef | wc -l) useless header guards, removing."
+	@cat $(DIST_DIR)/hguards.list | xargs -I{} sed -i "s/{}//g" $(DIST_DIR)/libft.h
+	@echo "Final header is $$(du -h $(DIST_DIR)/libft.h)"
+	@$(RM) $(DIST_DIR)/hguards.list
+	@grep -i '# include' $(DIST_DIR)/libft.h | grep -v 'libft_' | uniq | sort | tee -a $(DIST_DIR)/includes.list >/dev/null
+	@grep -vi '# include' $(DIST_DIR)/libft.h | tee $(DIST_DIR)/libft.h.new  > /dev/null
+	@head -n 14 $(DIST_DIR)/libft.h.new | tee $(DIST_DIR)/libft.h > /dev/null
+	@cat $(DIST_DIR)/includes.list | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@tail -n +15 $(DIST_DIR)/libft.h.new | tee -a $(DIST_DIR)/libft.h > /dev/null
+	@$(RM) $(DIST_DIR)/libft.h.new
+	@$(RM) $(DIST_DIR)/includes.list
+	@make --no-print-directory -C $(DIST_DIR)
+	@UNDEFINED=$$(nm -A -u $(DIST_DIR)/$(NAME) | xargs -I{} echo -e "\t{}"); \
+	NUNDEFINED=$$(echo -e "$$UNDEFINED" | cat - | wc -l); \
+	if [ $$NUNDEFINED -gt 0 ]; then \
+		echo "$$NUNDEFINED undefined symbol(s):"; \
+		echo -e "$$UNDEFINED" | cat -; \
+	else \
+		echo "No undefined symbols!"; \
+	fi;
+
+relink: $(OBJS)
+	@$(RM) $(NAME) && echo "Removed $(NAME)"
+	@$(LD) $(LDFLAGS) $(NAME) $^ && echo "Linked $@"
+
+dist_clean:
+	@OK=$$(test -e $(DIST_DIR)); \
+	make clean --no-print-directory -C $(DIST_DIR);
+
+dist_fclean: dist_clean
+	@OK=$$(test -e $(DIST_DIR)); \
+	make fclean --no-print-directory -C $(DIST_DIR); \
+	$(RM) -r $(DIST_DIR);
+
+.PHONY: clean fclean all re relink debug release test version dist dist_clean dist_clean help default
