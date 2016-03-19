@@ -1,8 +1,0 @@
-memalloc
-strchr
-strlen
-strncmp
-strndup
-isanyof
-isdigit
-isalpha

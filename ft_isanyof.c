@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_access.c                                   :+:      :+:    :+:   */
+/*   ft_isanyof.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/29 08:27:50 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:34:25 by mwelsch          ###   ########.fr       */
+/*   Created: 2013/11/30 15:10:28 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/03/19 12:58:48 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <errno.h>
-#include <libft_file.h>
-#include <libft_printf.h>
+#include "libft.h"
 
-t_bool				ft_file_executable(const char *path)
+int		ft_isanyof(char c, char const *seps)
 {
-	return (ft_file_access(path, X_OK));
-}
-
-t_bool				ft_file_access(const char *path, int access_mode)
-{
-	if (access(path, access_mode))
-		return (FALSE);
-	return (TRUE);
+	while (seps && *seps)
+	{
+		if (c == *(seps++))
+			return (1);
+	}
+	return (0);
 }
