@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/19 12:59:49 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/19 14:43:30 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,29 @@
 
 # include <string.h>
 
+# define FT_INVALID_STR		"NULL"
+
 typedef unsigned char		t_uchar;
 typedef unsigned short		t_ushort;
 typedef unsigned int		t_uint;
 typedef unsigned long		t_ulong;
 typedef unsigned long long	t_ullong;
+
+typedef struct			s_list
+{
+	void				*content;
+	size_t				content_size;
+	struct s_list		*next;
+}						t_list;
+
+typedef enum			e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}						t_bool;
+
+typedef int				(*t_content_comparator)(void *a, void *b);
+
 
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
@@ -71,11 +89,44 @@ int			ft_strnequ(char const *s1, char const *s2,
 char		*ft_strsub(char const *s, unsigned int
 					start, size_t len);
 void		ft_putendl(char const *s);
-void		ft_putnbr_fd(int n, int fd);
+void		ft_putnbr(int nb);
 
 int			ft_isdigit(int c);
 int			ft_isanyof(char c, char const *seps);
 
 char		*ft_strndup(const char *s1, size_t n);
 
+void		ft_putchar(char c);
+void		ft_putstr(char const *str);
+
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char const *str, int fd);
+void		ft_putendl_fd(char const *str, int fd);
+void		ft_putnbr_fd(int nb, int fd);
+char		*ft_itoa(int n);
+
+void		ft_lstadd(t_list **alst, t_list *new);
+t_list		*ft_lstback(t_list *l);
+void		ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t s));
+t_bool		ft_lsteq(t_list *a, t_list *b, t_content_comparator comp);
+t_list		*ft_lstfront(t_list *l);
+void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list		*ft_lstlast(t_list *lst);
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list		*ft_lstnew(void const *content, size_t content_size);
+t_list		*ft_lstpush_back(t_list **lst, t_list *new);
+t_list		*ft_lstpush_front(t_list **lst, t_list *new);
+size_t		ft_lstsize(t_list *lst);
+
 #endif
+
+
+
+
+
+
+
+
+
+
