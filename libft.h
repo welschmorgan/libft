@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 10:25:44 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:32:18 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 
 # define FT_INVALID_STR		"NULL"
+
+# define FT_MIN(a, b)		(a < b ? a : b)
+# define FT_MAX(a, b)		(a > b ? a : b)
 
 typedef unsigned char		t_uchar;
 typedef unsigned short		t_ushort;

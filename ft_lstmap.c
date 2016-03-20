@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 18:23:08 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:38:26 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:47:04 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void		push_back(t_list **lst, t_list *elem)
 
 	if (!lst || !*lst)
 		return ;
+	if (!elem->content_size)
+		elem->content_size = sizeof(*elem);
 	ptr = *lst;
 	last = NULL;
 	while (ptr)
