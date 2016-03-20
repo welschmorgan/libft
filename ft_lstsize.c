@@ -6,11 +6,11 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/12 03:08:05 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:39:57 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 09:48:10 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_list.h"
+#include "libft.h"
 
 size_t		ft_lstsize(t_list *lst)
 {
