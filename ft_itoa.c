@@ -6,50 +6,44 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 11:30:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 11:20:50 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 12:10:22 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_nbr_size(int dig)
+static char	*ft_itoa_core(unsigned n, int sign, char *buf, int p)
 {
-	int			ret;
-	int			temp;
+	unsigned	d;
+	unsigned	m;
 
-	temp = dig;
-	ret = 0;
-	if (dig < 0 || !dig)
-		ret++;
-	while (temp)
+	buf[p--] = 0;
+	d = n;
+	m = d % 10;
+	while (d > 0)
 	{
-		ret++;
-		temp /= 10;
+		buf[p--] = '0' + m;
+		d /=  10;
+		m = d % 10;
 	}
-	return (ret);
+	if (sign < 0)
+		buf[p--] = '-';
+	return (&buf[p + 1]);
 }
 
 char		*ft_itoa(int n)
 {
-	static char			ret[32];
-	int					neg;
-	int					num_chars;
-	int					temp;
-	unsigned int		v;
+	int			p;
+	static char	buf[32] = {0};
+	int			sign;
 
-	neg = ((n < 0) ? 1 : 0);
-	num_chars = ft_nbr_size(n);
-	v = (unsigned)((n < 0) ? -n : n);
-	ret[num_chars] = 0;
-	if (!v)
-		ret[0] = '0';
-	else if (neg)
-		ret[0] = '-';
-	temp = num_chars - 1;
-	while (v)
+	p = sizeof(buf) / sizeof(char);
+	sign = n < 0 ? -1 : 1;
+	n = (unsigned)(((long)n) * sign);
+	if (!n)
 	{
-		ret[temp--] = '0' + v % 10;
-		v /= 10;
+		buf[p--] = '0';
+		return (&buf[p + 1]);
 	}
-	return (ret);
+	return (ft_itoa_core(n, sign, buf, p));
 }

@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 20:45:01 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 10:26:33 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 12:17:15 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ char			**ft_strsplit(char const *s, char c)
 	char	**p_ret;
 	size_t	len;
 
+	if (!s)
+		return (NULL);
 	len = ft_count_words(s, c);
 	ret = (char**)ft_memalloc(sizeof(char*) * (len + 1));
 	ptr = (char*)s;
@@ -78,3 +80,4 @@ char			**ft_strsplit(char const *s, char c)
 	*p_ret = NULL;
 	return (ret);
 }
+

@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 10:32:18 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 11:27:59 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ void						ft_putstr_fd(char const *str, int fd);
 void						ft_putendl_fd(char const *str, int fd);
 void						ft_putnbr_fd(int nb, int fd);
 char						*ft_itoa(int n);
+char						*ft_ntoa(long num, int base);
 
 void						ft_lstadd(t_list **alst, t_list *new);
 t_list						*ft_lstback(t_list *l);
