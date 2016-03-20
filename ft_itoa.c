@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 11:30:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/19 13:39:10 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 11:20:50 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,15 @@ static int	ft_nbr_size(int dig)
 
 char		*ft_itoa(int n)
 {
-	char				*ret;
+	static char			ret[32];
 	int					neg;
 	int					num_chars;
 	int					temp;
 	unsigned int		v;
 
-	ret = NULL;
 	neg = ((n < 0) ? 1 : 0);
 	num_chars = ft_nbr_size(n);
 	v = (unsigned)((n < 0) ? -n : n);
-	ret = ft_strnew(num_chars);
 	ret[num_chars] = 0;
 	if (!v)
 		ret[0] = '0';

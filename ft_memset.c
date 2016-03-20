@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:41 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/12 16:34:41 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:48:14 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	t_uchar		*pstart;
 	t_uchar		*pend;
 
-	if (!b || !len)
-		return (b);
 	pstart = (unsigned char *)b;
 	pend = pstart + len;
 	while (pstart < pend)

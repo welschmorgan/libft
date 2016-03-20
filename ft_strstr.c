@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 19:21:32 by mwelsch           #+#    #+#             */
-/*   Updated: 2014/02/16 12:01:10 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 11:05:30 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*ft_strstr(char const *hstack, char const *needle)
 	size_t	nlen;
 
 	nlen = ft_strlen(needle);
-	if (!needle || !nlen || !hstack)
-		return ((char*)hstack);
+	if (!nlen)
+	  return ((char*)hstack);
 	start = (char*)hstack;
 	while ((start = ft_strchr(start, *needle)))
 	{

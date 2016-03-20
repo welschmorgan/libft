@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 16:50:16 by mwelsch           #+#    #+#             */
-/*   Updated: 2014/02/16 11:44:06 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:53:47 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	const t_uchar		*ptr;
 
 	ptr = (const t_uchar *)s;
-	while (ptr && n--)
+	while (n--)
 	{
 		if (*ptr == (unsigned char)c)
 			return ((void*)ptr);

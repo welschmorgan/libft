@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 21:39:21 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/19 13:40:17 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 11:20:33 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,4 @@ void		ft_putnbr_fd(int num, int fd)
 
 	str = ft_itoa(num);
 	ft_putstr_fd(str, fd);
-	ft_strdel(&str);
 }

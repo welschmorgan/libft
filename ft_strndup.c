@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 17:45:07 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/12/28 05:03:53 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:56:58 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ char	*ft_strndup(const char *src, size_t max)
 	dup = ft_strnew(len);
 	if (!dup)
 		return (NULL);
-	if (src)
-		ft_strncpy(dup, src, len);
-	else
-		dup[0] = '\0';
+	ft_strncpy(dup, src, len);
 	return (dup);
 }

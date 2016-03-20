@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 13:54:20 by mwelsch           #+#    #+#             */
-/*   Updated: 2014/01/18 21:43:26 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 10:55:42 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	ret;
 
 	ret = 0;
-	while (s && *s)
+	while (*s)
 	{
 		ret++;
 		s++;

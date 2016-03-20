@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 18:52:31 by mwelsch           #+#    #+#             */
-/*   Updated: 2013/12/04 13:30:11 by DarkBoss         ###   ########.fr       */
+/*   Updated: 2016/03/20 10:50:25 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	dptr = (char*)dest;
 	sptr = (const char *)src;
-	while (n-- && sptr && dptr)
+	while (n--)
 		*dptr++ = *sptr++;
 	return (dest);
 }

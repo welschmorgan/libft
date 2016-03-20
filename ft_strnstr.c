@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 20:07:09 by mwelsch           #+#    #+#             */
-/*   Updated: 2014/02/16 11:57:20 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/20 11:08:12 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *hstack, const char *needle, size_t n)
 
 	nlen = ft_strlen(needle);
 	max = (char*)(hstack + n);
-	if (!needle || !nlen || !hstack)
+	if (!nlen)
 		return ((char*)hstack);
 	start = (char*)hstack;
 	while ((start = ft_strchr(start, *needle)) && start <= max)
