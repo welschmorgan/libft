@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strltrim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 21:30:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 10:08:36 by mwelsch          ###   ########.fr       */
+/*   Created: 2014/02/19 11:23:44 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/03/20 10:04:42 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include <libft.h>
 
-void	ft_putstr(char const *str)
+char		*ft_strltrim(char *str, char const *separators)
 {
-	ft_putstr_fd(str, 1);
+	char	*ptr;
+
+	while (str && ft_isanyof(*str, separators))
+	{
+		ptr = str;
+		while (ptr && *ptr)
+		{
+			*ptr = *(ptr + 1);
+			ptr++;
+		}
+	}
+	return (str);
 }
