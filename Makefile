@@ -12,6 +12,8 @@ SRCS=$(shell find . -maxdepth 1 -name "*.c")
 OBJS=$(patsubst %.c,%.o,$(SRCS))
 NOBJS=$(shell echo $(OBJS) | wc -w)
 
+all: $(NAME)
+
 $(NAME): $(OBJS)
 	@PRCT=$$( echo "scale=1; $(COUNT) / $(NOBJS) * 100.0" | bc ); \
 	printf "\r\033[K[$(CC)|%s%%] Linking $@" "$$PRCT" ; \
@@ -34,9 +36,6 @@ fclean: clean
 	@[ -e $(NAME) ] && echo "Removing target ($(NAME))."; \
 	rm -f $(NAME);
 
-re: fclean all
-
-all: $(NAME)
-
+re: fclean $(NAME)
 
 .PHONY: clean fclean re all
