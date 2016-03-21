@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 20:45:01 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 12:17:15 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 12:40:19 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,31 +53,28 @@ static char		*trim_word(char *ptr, char c)
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	*ptr;
-	char	*orig;
-	char	**ret;
-	char	**p_ret;
-	size_t	len;
+	t_strsplit_env		env;
 
 	if (!s)
 		return (NULL);
-	len = ft_count_words(s, c);
-	ret = (char**)ft_memalloc(sizeof(char*) * (len + 1));
-	ptr = (char*)s;
-	p_ret = ret;
-	while (ptr && *ptr)
+	env.c = c;
+	env.str = s;
+	env.len = ft_count_words(env.str, c);
+	env.ret = (char**)ft_memalloc(sizeof(char*) * (env.len + 1));
+	env.ptr = (char*)env.str;
+	env.p_ret = env.ret;
+	while (env.ptr && *env.ptr)
 	{
-		ptr = trim_chars(ptr, c);
-		orig = ptr;
-		ptr = trim_word(ptr, c);
-		len = ft_strlen_ptr(orig, ptr);
-		if (orig && p_ret && *orig)
-			*p_ret++ = ft_strsub(orig, 0, len);
-		if (!*ptr)
+		env.ptr = trim_chars(env.ptr, env.c);
+		env.orig = env.ptr;
+		env.ptr = trim_word(env.ptr, env.c);
+		env.len = ft_strlen_ptr(env.orig, env.ptr);
+		if (env.orig && env.p_ret && *env.orig)
+			*env.p_ret++ = ft_strsub(env.orig, 0, env.len);
+		if (!*env.ptr)
 			break ;
-		ptr++;
+		env.ptr++;
 	}
-	*p_ret = NULL;
-	return (ret);
+	*env.p_ret = NULL;
+	return (env.ret);
 }
-

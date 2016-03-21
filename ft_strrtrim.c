@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 11:24:05 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 10:04:48 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 11:18:50 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strrtrim(char *str, char const *separators)
 	char	*p_start;
 	size_t	len;
 
+	if (!str)
+		return (str);
 	len = ft_strlen(str);
 	if (!len)
 		return (str);

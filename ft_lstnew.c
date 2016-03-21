@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 18:45:07 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:37:58 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 13:00:59 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		ret->content_size = content_size;
-		ret->content = (void*)content;
+		ret->content = ft_memalloc(content_size);
+		ft_memcpy(ret->content, content, content_size);
 	}
 	ret->next = NULL;
 	return (ret);

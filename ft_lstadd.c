@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 18:44:30 by mwelsch           #+#    #+#             */
-/*   Updated: 2014/02/16 12:24:47 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 13:41:55 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,24 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (alst && *alst && new)
+	t_list	**cur;
+
+	if (!alst)
+		return ;
+	if (!*alst)
 	{
-		new->next = *alst;
-		*alst = new;
+		*alst = ft_lstnew(new, sizeof(t_list));
+		return ;
 	}
+	cur = alst;
+	while (*cur)
+		cur = &cur->next;
+	*cur = new;
 }
+/*
+**if (alst && *alst && new)
+**{
+**	new->next = *alst;
+**	*alst = new;
+**}
+*/

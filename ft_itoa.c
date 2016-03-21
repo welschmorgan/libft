@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 11:30:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 12:10:22 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 12:30:21 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*ft_itoa_core(unsigned n, int sign, char *buf, int p)
 	while (d > 0)
 	{
 		buf[p--] = '0' + m;
-		d /=  10;
+		d /= 10;
 		m = d % 10;
 	}
 	if (sign < 0)

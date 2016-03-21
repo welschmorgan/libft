@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 11:27:59 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/21 12:41:02 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ typedef enum				e_bool
 	FALSE = 0,
 	TRUE = 1
 }							t_bool;
+
+typedef struct				s_strsplit_env
+{
+	char					c;
+	char const				*str;
+	char					*ptr;
+	char					**ret;
+	char					**p_ret;
+	size_t					len;
+	char					*orig;
+}							t_strsplit_env;
 
 typedef int					(*t_content_comparator)(void *a, void *b);
 
