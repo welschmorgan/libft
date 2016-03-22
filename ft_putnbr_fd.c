@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 21:39:21 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 11:20:33 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/22 13:55:40 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,28 @@
 
 void		ft_putnbr_fd(int num, int fd)
 {
-	char	*str;
+	static char	buf[32];
+	char		*pbuf;
+	unsigned	m;
+	unsigned	d;
+	int			s;
 
-	str = ft_itoa(num);
-	ft_putstr_fd(str, fd);
+	ft_bzero((void*)buf, 32 * sizeof(char));
+	s = num < 0 ? -1 : 1;
+	d = (unsigned)(((long)num) * s);
+	m = d % 10;
+	pbuf = &buf[0] + (sizeof(buf) / sizeof(char));
+	*pbuf-- = 0;
+	if (!num)
+		*pbuf-- = '0';
+	while (d > 0 && pbuf >= &buf[0])
+	{
+		*pbuf-- = '0' + m;
+		d /= 10;
+		m = d % 10;
+	}
+	if (s < 0)
+		*pbuf-- = '-';
+	pbuf++;
+	ft_putstr_fd(pbuf, fd);
 }

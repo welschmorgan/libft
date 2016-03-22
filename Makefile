@@ -1,6 +1,6 @@
 NAME=libft.a
 
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I. -g
 LDFLAGS = rcs
 CC = gcc
 LD = ar

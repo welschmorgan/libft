@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 18:23:08 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/21 14:51:54 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/22 14:08:11 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*p_cur;
 	t_list	*p_dup;
+	t_list	*p_mapped;
 
 	p_dup = NULL;
 	p_cur = lst;
 	while (p_cur)
 	{
-		ft_lstadd(&p_dup, f(p_cur));
+		p_mapped = f(p_cur);
+		if (!p_mapped)
+			return (NULL);
+		ft_lstadd(&p_dup, p_mapped);
 		if (!p_dup)
 			return (NULL);
 		p_cur = p_cur->next;

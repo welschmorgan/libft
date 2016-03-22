@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/21 12:41:02 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/22 14:00:58 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ typedef struct				s_strsplit_env
 	size_t					len;
 	char					*orig;
 }							t_strsplit_env;
+
+typedef struct				s_ibtoa
+{
+	unsigned				num;
+	unsigned				base;
+	unsigned				div;
+	unsigned				mod;
+	char const				*range;
+	char					sign;
+	char					*buf;
+	char					*pbuf;
+	unsigned				cur;
+	unsigned				len;
+}							t_ibtoa;
 
 typedef int					(*t_content_comparator)(void *a, void *b);
 
@@ -141,6 +155,8 @@ void						ft_putendl_fd(char const *str, int fd);
 void						ft_putnbr_fd(int nb, int fd);
 char						*ft_itoa(int n);
 char						*ft_ntoa(long num, int base);
+
+char						*ft_ibtoa(int n, unsigned base);
 
 void						ft_lstadd(t_list **alst, t_list *new);
 t_list						*ft_lstback(t_list *l);
