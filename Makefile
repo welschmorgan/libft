@@ -12,8 +12,6 @@ SRCS=$(shell find . -maxdepth 1 -name "*.c")
 OBJS=$(patsubst %.c,%.o,$(SRCS))
 NOBJS=$(shell echo $(OBJS) | wc -w)
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
 	@PRCT=$$( echo "scale=1; $(COUNT) / $(NOBJS) * 100.0" | bc ); \
 	printf "\r\033[K[$(CC)|%s%%] Linking $@" "$$PRCT" ; \
@@ -26,6 +24,8 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c -o $@ $^; \
 	$(eval COUNT = $(shell echo "$(COUNT) + 1" | bc) ) \
 	printf "\r\033[K[$(CC)|%s%%] Compiled %s into %s ... " "$$PRCT" "$<" "$@"; \
+
+all: $(NAME)
 
 clean:
 	@NOBJS=$$(find . -maxdepth 1 -name "*.o" | wc -w); \
