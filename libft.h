@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/24 13:08:56 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 14:24:53 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ typedef int					(*t_content_comparator)(void *a, void *b);
 
 void						*ft_memset(void *b, int c, size_t len);
 void						ft_bzero(void *s, size_t n);
-void						*ft_memcpy(void *restrict dst, const void *src,
+void						*ft_memcpy(void *dst, const void *src,
 									size_t n);
-void						*ft_memccpy(void *restrict dst, const void *src,
+void						*ft_memccpy(void *dst, const void *src,
 										int c, size_t n);
 void						*ft_memmove(void *dest, const void *src, size_t n);
 void						*ft_memchr(const void *s, int c, size_t n);
