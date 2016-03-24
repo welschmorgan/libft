@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/24 14:33:39 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:13:15 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ int							ft_toupper(int c);
 int							ft_tolower(int c);
 
 void						*ft_memalloc(size_t size);
+void						*ft_memdup(const void *src, size_t size);
 void						ft_memdel(void **ap);
 char						*ft_strltrim(char *str, char const *separators);
 char						*ft_strrtrim(char *str, char const *separators);

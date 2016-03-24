@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlist_clear.c                                   :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/19 15:15:08 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/24 16:14:25 by mwelsch          ###   ########.fr       */
+/*   Created: 2014/01/18 03:13:42 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/03/24 16:13:03 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	ft_dlist_clear(t_dlist *list, t_dnode_deleter deleter)
+void		*ft_memdup(const void *src, size_t size)
 {
-	t_dnode	*cur;
-	t_dnode *next;
+	void	*tmp;
 
-	cur = list->tail;
-	while (cur)
-	{
-		next = cur->next;
-		ft_dlist_remove(list, &cur, deleter);
-		cur = next;
-	}
-	list->tail = NULL;
-	list->head = NULL;
+	tmp = NULL;
+	if (!src)
+		return (NULL);
+	tmp = ft_memalloc(size);
+	if (tmp)
+		ft_memcpy(tmp, src, size);
+	return (tmp);
 }

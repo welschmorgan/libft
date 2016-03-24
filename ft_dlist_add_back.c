@@ -6,13 +6,11 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/19 15:17:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:45:19 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:13:53 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft_dlist.h>
-#include <libft_printf.h>
-#include <libft_string.h>
+#include <libft.h>
 
 t_dnode				*ft_dlist_push_back(t_dlist *list, t_dnode *new_node)
 {
