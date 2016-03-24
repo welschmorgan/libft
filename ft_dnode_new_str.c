@@ -6,12 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 13:02:05 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:33:54 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:18:25 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
-#include "libft_string.h"
+#include "libft.h"
 
 t_dnode				*ft_dnode_new_str(char const *str, unsigned int flags)
 {

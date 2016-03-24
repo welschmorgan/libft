@@ -6,14 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 13:03:17 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 15:01:28 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:21:48 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
-#include "libft_string.h"
-#include "libft_printf.h"
-#include "libft_memory.h"
+#include "libft.h"
 
 char				*ft_dnode_flag_name(t_dnode_flag flag)
 {
@@ -40,8 +37,12 @@ char				*ft_dnode_flag_str(t_dnode *node)
 	offs = 0;
 	ft_bzero(buf, 255);
 	offs = ft_strlen(buf);
-	ft_snprintf(buf, 255 - offs, "%s%s", (offs ? "|" : ""), "data");
+	ft_strncpy(&buf[offs], offs ? "|" : "", 255 - offs);
 	offs = ft_strlen(buf);
-	ft_snprintf(buf, 255 - offs, "%s%s", (offs ? "|" : ""), "node");
+	ft_strncpy(&buf[offs], "data", 255 - offs);
+	offs = ft_strlen(buf);
+	ft_strncpy(&buf[offs], offs ? "|" : "", 255 - offs);
+	offs = ft_strlen(buf);
+	ft_strncpy(&buf[offs], "node", 255 - offs);
 	return (buf);
 }

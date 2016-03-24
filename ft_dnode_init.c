@@ -6,11 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 13:00:32 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 13:31:57 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:18:40 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
+#include "libft.h"
 
 t_dnode	*ft_dnode_init(t_dnode *n, void *data, size_t size, int flags)
 {
