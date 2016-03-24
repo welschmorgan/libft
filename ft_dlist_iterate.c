@@ -6,11 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 12:52:11 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:52:41 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:08:23 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
+#include "libft.h"
 
 int					ft_dlist_riterate(t_dlist *l, t_dlist_iter_fn fn)
 {

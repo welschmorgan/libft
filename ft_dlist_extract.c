@@ -6,12 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 12:50:46 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:51:11 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:09:49 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
-#include "libft_printf.h"
+#include "libft.h"
 
 int					ft_dlist_contains(t_dlist *list,
 									t_dnode *node)

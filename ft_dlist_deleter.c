@@ -6,12 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 12:46:36 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:46:39 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:10:00 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft_dlist.h"
-#include "libft_memory.h"
+#include "libft.h"
 
 void				ft_dlist_deleter(t_dnode *n)
 {

@@ -6,13 +6,11 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/19 15:16:37 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:54:30 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:08:12 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft_printf.h>
-#include <libft_memory.h>
-#include <libft_dlist.h>
+#include <libft.h>
 
 void	ft_dlist_remove(t_dlist *list, t_dnode **node, t_dnode_deleter deleter)
 {

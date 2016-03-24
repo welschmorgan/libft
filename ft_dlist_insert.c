@@ -6,14 +6,11 @@
 /*   By: mwelsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 12:51:31 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/09 12:54:12 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/24 16:10:09 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft_dlist.h>
-#include <libft_memory.h>
-#include <libft_printf.h>
-#include <libft_string.h>
+#include <libft.h>
 
 t_dnode				*ft_dlist_insert_first(t_dlist *list, t_dnode *node)
 {
