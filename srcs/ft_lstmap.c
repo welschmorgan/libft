@@ -6,12 +6,11 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 18:23:08 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/22 14:08:11 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/03/26 14:38:29 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {

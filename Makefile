@@ -1,6 +1,10 @@
 NAME=libft.a
 
-CFLAGS = -Wall -Wextra -Werror -I. -g
+SRC_DIR = srcs
+OBJ_DIR = objs
+INC_DIR = includes
+
+CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -g
 LDFLAGS = rcs
 CC = gcc
 LD = ar
@@ -8,8 +12,8 @@ LD = ar
 SHELL=/bin/bash
 COUNT=0
 
-SRCS=$(shell find . -maxdepth 1 -name "*.c")
-OBJS=$(patsubst %.c,%.o,$(SRCS))
+SRCS=$(shell find $(SRC_DIR) -maxdepth 1 -name "*.c")
+OBJS=$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 NOBJS=$(shell echo $(OBJS) | wc -w)
 
 $(NAME): $(OBJS)
@@ -18,7 +22,8 @@ $(NAME): $(OBJS)
 	$(LD) $(LDFLAGS) $@ $^; \
 	printf "\r\033[K[$(CC)|%s%%] Linked $@\n" "$$PRCT";
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@if [ ! -d "$(OBJ_DIR)" ]; then mkdir -p $(OBJ_DIR); fi
 	@PRCT=$$( echo "scale=1; $(COUNT) / $(NOBJS) * 100.0" | bc ); \
 	printf "\r\033[K[$(CC)|%s%%] Compiling %s into %s ... " "$$PRCT" "$<" "$@"; \
 	$(CC) $(CFLAGS) -c -o $@ $^; \
@@ -28,7 +33,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	@NOBJS=$$(find . -maxdepth 1 -name "*.o" | wc -w); \
+	@NOBJS=$$(find $(OBJ_DIR) -maxdepth 1 -name "*.o" | wc -w); \
 	[ $$NOBJS -gt 0 ] && echo "Removing $$NOBJS object(s)."; \
 	rm -f $(OBJS);
 
