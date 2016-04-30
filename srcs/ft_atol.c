@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 20:22:10 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/04/30 14:49:49 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/04/30 14:51:07 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/04/30 14:51:15 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+# include "libft.h"
 
-#include "libft.h"
-
-int		ft_atoi(const char *str)
+long		ft_atol(const char *str)
 {
-	int	ret;
-	int	sign;
+	long	ret;
+	long	sign;
 
 	if (!*str)
 		return (0);

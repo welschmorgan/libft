@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 12:40:26 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/22 14:05:22 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/04/30 15:12:27 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ static t_ibtoa		*ft_ibtoa_init(t_ibtoa *n, int num, unsigned base)
 	n->cur = 0;
 	n->len = ft_ibtoa_len(n);
 	n->buf = ft_strnew(n->len);
+	n->pbuf = NULL;
 	if (n->buf)
-	{
-		n->pbuf = &n->buf[0] + n->len;
-		*n->pbuf-- = 0;
-	}
+		n->pbuf = &n->buf[n->len - 1];
 	return (n);
 }
 
@@ -61,18 +59,19 @@ static t_ibtoa		*ft_ibtoa_do(t_ibtoa *n)
 	n->mod = n->div % n->base;
 	if (!n->num)
 	{
-		*n->pbuf-- = 0;
-		*n->pbuf = '0';
-		return (n);
+		*n->pbuf-- = '0';
 	}
-	while (n->div > 0 && n->cur <= n->len)
+	else
 	{
-		*n->pbuf-- = n->range[n->mod];
-		n->div /= n->base;
-		n->mod = n->div % n->base;
+		while (n->div > 0 && n->cur <= n->len)
+		{
+			*n->pbuf-- = n->range[n->mod];
+			n->div /= n->base;
+			n->mod = n->div % n->base;
+		}
+		if (n->sign < 0)
+			*n->pbuf-- = '-';
 	}
-	if (n->sign < 0)
-		*n->pbuf-- = '-';
 	n->pbuf++;
 	return (n);
 }

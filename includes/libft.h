@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/26 14:02:48 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/04/30 13:18:47 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,26 @@ char						*ft_strsub(char const *s, unsigned int
 									start, size_t len);
 void						ft_putendl(char const *s);
 void						ft_putnbr(int nb);
+
+char						*ft_strnpad_r(char *str,
+										  size_t n,
+										  char c);
+char						*ft_strnpad_l(char *str,
+										  size_t n,
+										  char c);
+
+char						*ft_strnrot_l(char *str,
+										  size_t n,
+										  int count);
+char						*ft_strnrot_r(char *str,
+										  size_t n,
+										  int count);
+
+char						*ft_strnrot_one_l(char *str,
+											  size_t n);
+char						*ft_strnrot_one_r(char *str,
+											  size_t n);
+
 
 int							ft_isdigit(int c);
 int							ft_isanyof(char c, char const *seps);
