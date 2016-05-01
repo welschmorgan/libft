@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/04/30 13:18:47 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/01 19:54:15 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <wchar.h>
 
 # define FT_INVALID_STR		"NULL"
 # define _DEBUG_DLIST		0
@@ -120,6 +121,20 @@ typedef struct				s_ibtoa
 	unsigned				len;
 }							t_ibtoa;
 
+typedef struct				s_ubtoa
+{
+	unsigned				num;
+	unsigned				base;
+	unsigned				div;
+	unsigned				mod;
+	char const				*range;
+	char					sign;
+	char					*buf;
+	char					*pbuf;
+	unsigned				cur;
+	unsigned				len;
+}							t_ubtoa;
+
 typedef struct				s_lbtoa
 {
 	unsigned long			num;
@@ -133,6 +148,20 @@ typedef struct				s_lbtoa
 	unsigned				cur;
 	unsigned				len;
 }							t_lbtoa;
+
+typedef struct				s_llbtoa
+{
+	unsigned long long		num;
+	unsigned				base;
+	unsigned long long		div;
+	unsigned long long		mod;
+	char const				*range;
+	char					sign;
+	char					*buf;
+	char					*pbuf;
+	unsigned				cur;
+	unsigned				len;
+}							t_llbtoa;
 
 typedef int					(*t_content_comparator)(void *a, void *b);
 
@@ -165,7 +194,34 @@ void						ft_strdel(char **as);
 void						ft_strclr(char *s);
 
 size_t						ft_strlen(const char *s);
+
+wchar_t						*ft_wstrnew(size_t n);
+void						ft_wstrdel(wchar_t **as);
+size_t						ft_wstrlen(const wchar_t *s);
+wchar_t						*ft_wstrdup(const wchar_t *s1);
+wchar_t						*ft_wstrndup(const wchar_t *s1, size_t n);
+wchar_t						*ft_wstrcpy(wchar_t *dest, const wchar_t *src);
+wchar_t						*ft_wstrncpy(wchar_t *dest, const wchar_t *src, size_t n);
+
+wchar_t						*ft_wstrcat(wchar_t *s1, const wchar_t *s2);
+wchar_t						*ft_wstrncat(wchar_t *s1, const wchar_t *s2, size_t n);
+size_t						ft_wstrlcat(wchar_t *dst, const wchar_t *src, size_t size);
+wchar_t						*ft_wstrchr(const wchar_t *s, int c);
+wchar_t						*ft_wstrrchr(const wchar_t *s, int c);
+wchar_t						*ft_wstrstr(const wchar_t *big, const wchar_t *little);
+wchar_t						*ft_wstrnstr(const wchar_t *big, const wchar_t *little,
+										size_t len);
+int							ft_wstrcmp(const wchar_t *s1, const wchar_t *s2);
+int							ft_wstrncmp(const wchar_t *s1, const wchar_t *s2,
+										size_t n);
+int							ft_wstrequ(wchar_t const *s1, wchar_t const *s2);
+int							ft_wstrnequ(wchar_t const *s1, wchar_t const *s2,
+										size_t n);
+void						ft_wstrnclr(wchar_t *s, size_t n);
+void						ft_wstrclr(wchar_t *s);
+
 char						*ft_strdup(const char *s1);
+char						*ft_strndup(const char *s1, size_t n);
 char						*ft_strcpy(char *dst, const char *src);
 char						*ft_strncpy(char *dst, const char *src, size_t n);
 char						*ft_strcat(char *s1, const char *s2);
@@ -235,8 +291,6 @@ char						*ft_strnrot_one_r(char *str,
 int							ft_isdigit(int c);
 int							ft_isanyof(char c, char const *seps);
 
-char						*ft_strndup(const char *s1, size_t n);
-
 void						ft_putchar(char c);
 void						ft_putstr(char const *str);
 
@@ -244,11 +298,16 @@ void						ft_putchar_fd(char c, int fd);
 void						ft_putstr_fd(char const *str, int fd);
 void						ft_putendl_fd(char const *str, int fd);
 void						ft_putnbr_fd(int nb, int fd);
+
 char						*ft_itoa(int n);
+char						*ft_utoa(unsigned n);
 char						*ft_ltoa(long n);
+char						*ft_lltoa(long long n);
 
 char						*ft_ibtoa(int n, unsigned base);
+char						*ft_ubtoa(unsigned n, unsigned base);
 char						*ft_lbtoa(long n, unsigned base);
+char						*ft_llbtoa(long long n, unsigned base);
 
 void						ft_lstadd(t_list **alst, t_list *new);
 t_list						*ft_lstback(t_list *l);
