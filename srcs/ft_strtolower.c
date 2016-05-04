@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strtolower.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 21:30:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/01 21:06:10 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/05/02 21:05:06 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/05/02 21:08:26 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-int		ft_putstr(char const *str)
+char		*ft_strtolower(char *str)
 {
-	return (ft_putstr_fd(str, 1));
+	return  (ft_strntolower(str, ft_strlen(str)));
+}
+
+char		*ft_strntolower(char *str, size_t n)
+{
+	char	*sav;
+
+	sav = str;
+	while (str && *str && n--)
+	{
+		*str = ft_tolower(*str);
+		str++;
+	}
+	return (sav);
 }

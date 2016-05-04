@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 21:30:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/01 21:06:10 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/05/02 21:15:32 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/05/02 21:47:48 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-int		ft_putstr(char const *str)
+int							ft_isupper(int c)
 {
-	return (ft_putstr_fd(str, 1));
+	return (c >= 'A' && c <= 'Z');
 }

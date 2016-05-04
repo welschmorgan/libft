@@ -6,13 +6,13 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 21:34:45 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/20 11:17:11 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/01 21:09:09 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putnbr(int num)
+int			ft_putnbr(int num)
 {
-	ft_putnbr_fd(num, 1);
+	return (ft_putnbr_fd(num, 1));
 }

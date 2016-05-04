@@ -6,14 +6,14 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 21:29:26 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/19 13:41:05 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/01 21:05:43 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-void		ft_putchar(char c)
+int			ft_putchar(char c)
 {
-	ft_putchar_fd(c, 1);
+	return (ft_putchar_fd(c, 1));
 }

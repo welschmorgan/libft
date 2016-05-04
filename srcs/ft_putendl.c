@@ -6,14 +6,13 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/23 21:33:38 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/03/19 13:47:51 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/01 21:08:33 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putendl(char const *str)
+int			ft_putendl(char const *str)
 {
-	ft_putstr(str);
-	ft_putstr("\n");
+	return (ft_putendl_fd(str, 1));
 }

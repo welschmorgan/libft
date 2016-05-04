@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/01 19:11:32 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/01 19:16:45 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/01 21:19:16 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ size_t						ft_wstrlen(const wchar_t *s)
 
 	n = 0;
 	while (s && *s)
+	{
 		n++;
+		s++;
+	}
 	return (n);
 }

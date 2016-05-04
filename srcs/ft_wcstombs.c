@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_wcstombs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 21:30:15 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/01 21:06:10 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/05/01 20:48:48 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/05/01 20:54:22 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-int		ft_putstr(char const *str)
+size_t						ft_wcstombs(char *dest,
+										wchar_t const *src,
+										size_t n)
 {
-	return (ft_putstr_fd(str, 1));
+	size_t					len;
+	size_t					next;
+	char const				*mbs;
+
+	len = 0;
+	while (src && *src && n--)
+	{
+		mbs = ft_wctomb(*src);
+		next = ft_strlen(mbs);
+		if (dest)
+			ft_strncpy(dest, mbs, next);
+		len += next;
+		src++;
+	}
+	return (len);
 }
