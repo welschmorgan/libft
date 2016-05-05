@@ -12,7 +12,7 @@ LD = ar
 SHELL=/bin/bash
 COUNT=0
 
-SRCS=$(shell find $(SRC_DIR) -maxdepth 1 -name "*.c")
+SRCS=$(shell find $(SRC_DIR) -maxdepth 2 -name "*.c")
 OBJS=$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 NOBJS=$(shell echo $(OBJS) | wc -w)
 
@@ -23,7 +23,8 @@ $(NAME): $(OBJS)
 	printf "\r\033[K[$(CC)|%s%%] Linked $@\n" "$$PRCT";
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@if [ ! -d "$(OBJ_DIR)" ]; then mkdir -p $(OBJ_DIR); fi
+	@DIR=$$(dirname $@); \
+	if [ ! -d "$$DIR" ]; then mkdir -p $$DIR; fi
 	@PRCT=$$( echo "scale=1; $(COUNT) / $(NOBJS) * 100.0" | bc ); \
 	printf "\r\033[K[$(CC)|%s%%] Compiling %s into %s ... " "$$PRCT" "$<" "$@"; \
 	$(CC) $(CFLAGS) -c -o $@ $^; \
@@ -33,7 +34,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 all: $(NAME)
 
 clean:
-	@NOBJS=$$(find $(OBJ_DIR) -maxdepth 1 -name "*.o" | wc -w); \
+	@NOBJS=$$(find $(OBJ_DIR) -maxdepth 2 -name "*.o" | wc -w); \
 	[ $$NOBJS -gt 0 ] && echo "Removing $$NOBJS object(s)."; \
 	rm -f $(OBJS);
 
