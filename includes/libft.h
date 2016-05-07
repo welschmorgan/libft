@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/07 13:07:21 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/07 18:18:46 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -333,8 +333,10 @@ char						*ft_utoa(unsigned n);
 char						*ft_ltoa(long n);
 char						*ft_lltoa(long long n);
 char						*ft_ftoa(float f,
-									 unsigned char precision,
+									 int precision,
 									 unsigned base);
+
+unsigned					ft_log10u(unsigned x);
 
 
 char						*ft_ibtoa(int n, unsigned base);
@@ -482,5 +484,31 @@ typedef int					(*t_dlist_iter_fn)(t_dlist_iter *);
 
 int							ft_dlist_iterate(t_dlist *l, t_dlist_iter_fn fn);
 int							ft_dlist_riterate(t_dlist *l, t_dlist_iter_fn fn);
+
+
+typedef struct				s_float
+{
+	float					value;
+	float					fpart;
+	int						ipart;
+	int						fpart_len;
+	int						ipart_len;
+	unsigned char			sign;
+	unsigned				base;
+	unsigned char			exponent;
+	unsigned long			mantissa;
+	int						precision;
+}							t_float;
+
+char						*ft_float_string(t_float *f);
+int							ft_float_init(t_float *f,
+										  float val,
+										  int precision,
+										  unsigned base);
+
+int							ft_zerof(float f);
+int							ft_signf(float f);
+int							ft_flen(float f, int prec);
+int							ft_nlen(long);
 
 #endif

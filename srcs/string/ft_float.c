@@ -6,21 +6,11 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/07 12:51:34 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/07 13:03:46 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/07 19:22:29 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-typedef struct		s_float
-{
-	float			value;
-	unsigned char	sign;
-	unsigned		base;
-	unsigned char	exponent;
-	unsigned long	mantissa;
-	unsigned char	precision;
-}					t_float;
 
 static double		ft_float_fabs(double f)
 {
@@ -40,43 +30,59 @@ static double		ft_float_powf(double x, double y)
 	return (ret);
 }
 
-static char			*ft_float_string(t_float *f)
+char				*ft_float_string(t_float *f)
 {
-	float			fpart;
-	int				ipart;
 	static char		smlbuf[33] = {0};
 	static char		bigbuf[33] = {0};
 	int				len;
+	int				i;
+	char			*data;
 
-	ipart = (int)f->value;
-	fpart = ft_float_fabs(f->value - (float)ipart);
-	fpart *= ft_float_powf(10.0f,
-					 (float)(f->precision > 0
-							 ? f->precision
-							 : 0));
 	len = 0;
-	ft_strncpy(bigbuf, ft_ibtoa_s(ipart, 10, smlbuf, 32), 32 - len);
+	ft_memset((void*)smlbuf, 0, 32 * sizeof(char));
+	ft_memset((void*)bigbuf, 0, 32 * sizeof(char));
+	ft_strncpy(bigbuf, ft_ibtoa_s(f->ipart, f->base, smlbuf, 32), 32 - len);
 	len = ft_strlen(bigbuf);
-	ft_strncpy(bigbuf + len, ".", 32 - len);
-	len = ft_strlen(bigbuf);
-	ft_strncpy(bigbuf + len, ft_ibtoa_s((int)fpart, 10, smlbuf, 32), 32 - len);
-	if (ft_strlen(bigbuf + len) >= f->precision)
-		bigbuf[len + f->precision] = 0;
-	len = ft_strlen(bigbuf);
+	if (f->precision != 0)
+	{
+		ft_strncpy(bigbuf + len, ".", 32 - len);
+		len = ft_strlen(bigbuf);
+		data = ft_ibtoa_s((int)f->fpart, f->base, smlbuf, 32);
+		if (((int)ft_strlen(data)) > f->precision)
+			data[f->precision] = 0;
+		else
+		{
+			i = ft_strlen(data);
+			while (i < f->precision)
+				data[i++] = '0';
+			data[i] = 0;
+		}
+		ft_strncpy(bigbuf + len, data, 32 - len);
+		len = ft_strlen(bigbuf);
+	}
 	bigbuf[len] = 0;
 	return (bigbuf);
 }
 
-static int			ft_float_init(t_float *f,
-								  float val,
-								  unsigned char precision,
-								  unsigned base)
+int					ft_float_init(t_float *f,
+							  float val,
+							  int precision,
+							  unsigned base)
 {
 	f->value = val;
 	f->sign = ft_bit((const char *)&val, sizeof(float), 31);
 	f->exponent = 0;
-	f->precision = precision;
+	f->precision = ((precision < 0)
+					? 6
+					: (precision > 7
+					   ? 7
+					   : precision));
 	f->base = base;
+	f->ipart = (int)ft_float_fabs(val);
+	f->fpart = ft_float_fabs(ft_float_fabs(f->value) - (float)f->ipart);
+	f->fpart *= ft_float_powf(10.0f, ft_float_fabs((float)f->precision));
+	f->ipart_len = ft_log10u((unsigned)f->ipart);
+	f->fpart_len = ft_log10u((unsigned)f->fpart);
 	int i;
 	i = 0;
 	while (i < 8)
@@ -97,11 +103,15 @@ static int			ft_float_init(t_float *f,
 }
 
 char				*ft_ftoa(float f,
-							 unsigned char precision,
+							 int precision,
 							 unsigned base)
 {
 	t_float			flt;
+	char			*data;
 
 	ft_float_init(&flt, f, precision, base);
-	return (ft_float_string(&flt));
+	data = ft_float_string(&flt);
+	if (data)
+		data = ft_strdup(data);
+	return (data);
 }

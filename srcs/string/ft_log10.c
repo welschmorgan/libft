@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_log10.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/26 15:10:00 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/07 19:01:25 by mwelsch          ###   ########.fr       */
+/*   Created: 2016/05/07 15:01:13 by mwelsch           #+#    #+#             */
+/*   Updated: 2016/05/07 15:06:14 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, const char *src, size_t n)
-{
-	size_t	i;
+static unsigned		g_log10s[][2] = {
+	{ 1000000000, 10 },
+	{ 100000000, 9 },
+	{ 10000000, 8 },
+	{ 1000000, 7 },
+	{ 100000, 6 },
+	{ 10000, 5 },
+	{ 1000, 4 },
+	{ 100, 3 },
+	{ 10, 2 },
+	{ 1, 1 }
+};
 
+unsigned			ft_log10u(unsigned x)
+{
+	int				i;
+	int				cnt;
+
+	cnt = sizeof(g_log10s) / sizeof(int[2]);
 	i = 0;
-	while (i < n && src[i])
+	while (i < cnt)
 	{
-		dest[i] = src[i];
+		if (x >= g_log10s[i][0])
+			return (g_log10s[i][1]);
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (0);
 }

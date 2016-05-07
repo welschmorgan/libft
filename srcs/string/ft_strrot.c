@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/30 12:47:19 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/04/30 12:51:18 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/07 18:52:17 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char		*ft_strnrot_one_l(char *str,
 		*pcur = *(pcur + 1);
 		pcur++;
 	}
+	*pcur = 0;
 	return (str);
 }
 
@@ -54,10 +55,11 @@ char		*ft_strnrot_one_r(char *str,
 
 	pcur = str + n;
 	pend = str;
+	*pcur-- = 0;
 	while (pcur > pend && n--)
 	{
 		*pcur = *(pcur - 1);
 		pcur--;
 	}
-	return (str);
+	return (pcur);
 }
