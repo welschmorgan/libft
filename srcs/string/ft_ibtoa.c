@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 12:40:26 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/02 01:21:31 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/05 20:05:46 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ static t_llbtoa		*ft_ibtoa_init_buf(t_llbtoa *n,
 	n->buf = buf ? buf : ft_strnew(n->max);
 	n->pbuf = NULL;
 	if (n->buf)
+	{
 		n->pbuf = &n->buf[n->max - 1];
+		*n->pbuf-- = 0;
+	}
 	return (n);
 }
 
@@ -106,7 +109,7 @@ char				*ft_ibtoa_s(int n, unsigned base, char *buf, size_t max)
 	}
 	else
 	{
-		ret = buf;
+		ret = env.pbuf;
 	}
 	return (ret);
 }

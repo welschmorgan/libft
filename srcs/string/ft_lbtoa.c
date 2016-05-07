@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 12:40:26 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/02 01:21:45 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/06 01:12:39 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char				*ft_lbtoa_s(long n, unsigned base, char *buf, size_t max)
 	}
 	else
 	{
-		ret = buf;
+		ret = env.pbuf;
 	}
 	return (ret);
 }

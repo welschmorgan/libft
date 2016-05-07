@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/19 11:26:49 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/03 21:11:18 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/07 13:07:21 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@
 
 # define FT_MIN(a, b)		(a < b ? a : b)
 # define FT_MAX(a, b)		(a > b ? a : b)
+# define FT_EPSILON			1.0e-7
 
 typedef unsigned char		t_uchar;
 typedef unsigned short		t_ushort;
 typedef unsigned int		t_uint;
 typedef unsigned long		t_ulong;
 typedef unsigned long long	t_ullong;
+
+typedef enum				e_endian
+{
+	ENDIAN_LITTLE,
+	ENDIAN_BIG
+}							t_endian;
 
 typedef struct				s_list
 {
@@ -123,6 +130,14 @@ typedef struct				s_llbtoa
 }							t_llbtoa;
 
 typedef int					(*t_content_comparator)(void *a, void *b);
+
+char						ft_bit(const char *value,
+								   size_t elem_size,
+								   int bit);
+
+t_endian					ft_endian();
+char const					*ft_endian_name();
+
 
 void						*ft_memset(void *b, int c, size_t len);
 void						ft_bzero(void *s, size_t n);
@@ -317,6 +332,10 @@ char						*ft_itoa(int n);
 char						*ft_utoa(unsigned n);
 char						*ft_ltoa(long n);
 char						*ft_lltoa(long long n);
+char						*ft_ftoa(float f,
+									 unsigned char precision,
+									 unsigned base);
+
 
 char						*ft_ibtoa(int n, unsigned base);
 char						*ft_ubtoa(unsigned n, unsigned base);
