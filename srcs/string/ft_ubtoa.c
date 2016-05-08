@@ -6,7 +6,7 @@
 /*   By: mwelsch <mwelsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/22 12:40:26 by mwelsch           #+#    #+#             */
-/*   Updated: 2016/05/02 01:21:57 by mwelsch          ###   ########.fr       */
+/*   Updated: 2016/05/08 11:26:56 by mwelsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static unsigned		ft_ubtoa_len(t_llbtoa *n)
 }
 
 static t_llbtoa		*ft_ubtoa_init(t_llbtoa *n,
-								   int num,
+								   unsigned num,
 								   unsigned base)
 {
 	static char const	range[] = "0123456789abcdefghijklmnopqrstuvwxyz";
 	unsigned			range_len;
 
 	range_len = ft_strlen(range);
-	n->sign = num < 0 ? -1 : 1;
+	n->sign = 1;
 	n->num = ((long long)num) * n->sign;
 	n->base = base > range_len ? range_len : base;
 	n->range = &range[0];
